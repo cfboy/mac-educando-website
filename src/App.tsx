@@ -13,7 +13,7 @@ function App() {
     <div className="min-h-screen">
       <Navbar theme={theme} onToggleTheme={toggleTheme} />
       <main>
-        <Hero />
+        <Hero theme={theme} />
         <Services />
         <About />
         <Contact />

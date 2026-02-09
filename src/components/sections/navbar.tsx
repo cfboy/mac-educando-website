@@ -1,6 +1,7 @@
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { useState } from 'react'
 
+import mLogo from '@/assets/images/logos/m-logo.png'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
@@ -23,7 +24,7 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
     <nav className="fixed top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <a href="#inicio" className="flex items-center gap-2">
-          <MacLogo className="h-10 w-10" />
+          <img src={mLogo} alt="MAC Logo" className="h-10 w-10" />
           <span className="text-lg font-bold text-[var(--primary)]">
             MAC{' '}
             <span className="hidden text-[var(--secondary)] sm:inline">
@@ -101,65 +102,5 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
         </div>
       </div>
     </nav>
-  )
-}
-
-function MacLogo({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 100 100" className={className} aria-hidden="true">
-      {/* M letter */}
-      <path
-        d="M15 85 L15 40 L35 65 L50 45 L65 65 L85 40 L85 85 L72 85 L72 60 L58 78 L50 68 L42 78 L28 60 L28 85 Z"
-        fill="var(--primary)"
-      />
-      {/* Tree trunk */}
-      <path
-        d="M47 45 Q50 20 53 45"
-        fill="none"
-        stroke="#d4651a"
-        strokeWidth="3"
-      />
-      {/* Leaves */}
-      <ellipse
-        cx="42"
-        cy="25"
-        rx="6"
-        ry="4"
-        fill="#2d6a2e"
-        transform="rotate(-30 42 25)"
-      />
-      <ellipse
-        cx="50"
-        cy="18"
-        rx="5"
-        ry="3.5"
-        fill="#4e9a47"
-        transform="rotate(0 50 18)"
-      />
-      <ellipse
-        cx="58"
-        cy="25"
-        rx="6"
-        ry="4"
-        fill="#7cb342"
-        transform="rotate(30 58 25)"
-      />
-      <ellipse
-        cx="45"
-        cy="32"
-        rx="5"
-        ry="3"
-        fill="#ffd600"
-        transform="rotate(-20 45 32)"
-      />
-      <ellipse
-        cx="55"
-        cy="32"
-        rx="5"
-        ry="3"
-        fill="#2d6a2e"
-        transform="rotate(20 55 32)"
-      />
-    </svg>
   )
 }
