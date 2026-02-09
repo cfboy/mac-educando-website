@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Brand colors extracted from MAC Educando logo */
+  --color-mac-green-50: #f0f7ef;
+  --color-mac-green-100: #d4ebd2;
+  --color-mac-green-200: #a8d6a4;
+  --color-mac-green-300: #7cb876;
+  --color-mac-green-400: #4e9a47;
+  --color-mac-green-500: #2d6a2e;
+  --color-mac-green-600: #245724;
+  --color-mac-green-700: #1b441b;
+  --color-mac-green-800: #133113;
+  --color-mac-green-900: #0a1f0a;
+
+  --color-mac-orange-50: #fff4eb;
+  --color-mac-orange-100: #ffe1c7;
+  --color-mac-orange-200: #ffc48f;
+  --color-mac-orange-300: #ffa657;
+  --color-mac-orange-400: #e8751a;
+  --color-mac-orange-500: #d4651a;
+  --color-mac-orange-600: #b5520f;
+  --color-mac-orange-700: #8a3e0b;
+  --color-mac-orange-800: #5f2b08;
+  --color-mac-orange-900: #351804;
+
+  --color-mac-leaf: #7cb342;
+  --color-mac-yellow: #ffd600;
+}
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #0a1f0a;
+    --card: #ffffff;
+    --card-foreground: #0a1f0a;
+    --muted: #f0f7ef;
+    --muted-foreground: #4a5e4a;
+    --border: #d4ebd2;
+    --ring: #2d6a2e;
+    --primary: #2d6a2e;
+    --primary-foreground: #ffffff;
+    --secondary: #e8751a;
+    --secondary-foreground: #ffffff;
+    --accent: #f0f7ef;
+    --accent-foreground: #1b441b;
+  }
+
+  .dark {
+    --background: #0c1a0c;
+    --foreground: #e8f5e8;
+    --card: #132213;
+    --card-foreground: #e8f5e8;
+    --muted: #1b331b;
+    --muted-foreground: #a8cda8;
+    --border: #245724;
+    --ring: #4e9a47;
+    --primary: #4e9a47;
+    --primary-foreground: #ffffff;
+    --secondary: #e8751a;
+    --secondary-foreground: #ffffff;
+    --accent: #1b331b;
+    --accent-foreground: #d4ebd2;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
