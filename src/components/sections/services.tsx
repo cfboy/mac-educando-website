@@ -1,12 +1,13 @@
+import { motion } from 'framer-motion'
 import {
-  Brain,
-  MessageCircle,
   Activity,
-  Hand,
+  BookOpen,
+  Brain,
   ClipboardCheck,
   GraduationCap,
+  Hand,
+  MessageCircle,
   Users,
-  BookOpen,
 } from 'lucide-react'
 
 import type { LucideIcon } from 'lucide-react'
@@ -72,7 +73,13 @@ export function Services() {
   return (
     <section id="servicios" className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mb-16 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16 text-center"
+        >
           <span className="mb-2 inline-block rounded-full bg-[var(--accent)] px-4 py-1.5 text-sm font-medium text-[var(--primary)]">
             Nuestros Servicios
           </span>
@@ -84,11 +91,11 @@ export function Services() {
             Brindamos una amplia gama de servicios especializados para apoyar el
             crecimiento profesional, académico y personal de cada individuo.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {SERVICES.map(service => (
-            <ServiceCard key={service.title} service={service} />
+          {SERVICES.map((service, index) => (
+            <ServiceCard key={service.title} service={service} index={index} />
           ))}
         </div>
       </div>
@@ -96,10 +103,16 @@ export function Services() {
   )
 }
 
-function ServiceCard({ service }: { service: Service }) {
+function ServiceCard({ service, index }: { service: Service; index: number }) {
   const Icon = service.icon
   return (
-    <div className="group hover:shadow-mac-green-500/5 rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 transition-all duration-300 hover:border-[var(--primary)] hover:shadow-lg">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group hover:shadow-mac-green-500/5 rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 transition-all duration-300 hover:border-[var(--primary)] hover:shadow-lg"
+    >
       <div className="mb-4 inline-flex rounded-lg bg-[var(--accent)] p-3 text-[var(--primary)] transition-colors group-hover:bg-[var(--primary)] group-hover:text-[var(--primary-foreground)]">
         <Icon className="h-6 w-6" />
       </div>
@@ -109,6 +122,6 @@ function ServiceCard({ service }: { service: Service }) {
       <p className="text-sm leading-relaxed text-[var(--muted-foreground)]">
         {service.description}
       </p>
-    </div>
+    </motion.div>
   )
 }

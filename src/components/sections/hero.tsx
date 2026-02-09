@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { ArrowDown, Phone } from 'lucide-react'
 
 import fullLogoLight from '@/assets/images/logos/full-logo-light.png'
@@ -28,26 +29,41 @@ export function Hero({ theme }: HeroProps) {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 py-20 text-center sm:px-6">
-        <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+        >
           <span className="text-[var(--primary)]">Centro de Servicios</span>
           <br />
           <span className="text-[var(--secondary)]">Educativos</span>
-        </h1>
+        </motion.h1>
         {/* Logo mark */}
-        <div className="mx-auto">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mx-auto"
+        >
           <img
             src={logoSrc}
             alt="MAC Educando Logo"
             className="mx-auto h-48 w-auto sm:h-64 md:h-80"
           />
-        </div>
+        </motion.div>
         {/* <p className="mx-auto mb-4 max-w-2xl text-lg text-[var(--muted-foreground)] sm:text-xl">
           <span className="font-semibold text-[var(--primary)]">
             M Adviser and Consultant Inc.
           </span>
         </p> */}
 
-        <p className="mx-auto mb-10 max-w-2xl text-base text-[var(--muted-foreground)] sm:text-lg">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mx-auto mb-10 max-w-2xl text-base text-[var(--muted-foreground)] sm:text-lg"
+        >
           Ofrecemos una amplia gama de servicios orientados al desarrollo{' '}
           <span className="font-semibold text-[var(--foreground)]">
             Profesional
@@ -61,9 +77,14 @@ export function Hero({ theme }: HeroProps) {
             Personal
           </span>
           .
-        </p>
+        </motion.p>
 
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+        >
           <ButtonLink href="#servicios" size="lg">
             Nuestros Servicios
           </ButtonLink>
@@ -71,15 +92,18 @@ export function Hero({ theme }: HeroProps) {
             <Phone className="h-4 w-4" />
             Contáctanos
           </ButtonLink>
-        </div>
+        </motion.div>
 
-        <a
+        <motion.a
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
           href="#servicios"
           className="mt-16 inline-block animate-bounce text-[var(--muted-foreground)] transition-colors hover:text-[var(--primary)]"
           aria-label="Ir a servicios"
         >
           <ArrowDown className="h-6 w-6" />
-        </a>
+        </motion.a>
       </div>
     </section>
   )

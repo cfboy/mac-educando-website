@@ -1,4 +1,5 @@
-import { Phone, Mail, MapPin, Clock, Facebook } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Clock, Facebook, Mail, MapPin, Phone } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
@@ -6,7 +7,13 @@ export function Contact() {
   return (
     <section id="contacto" className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mb-16 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16 text-center"
+        >
           <span className="mb-2 inline-block rounded-full bg-[var(--accent)] px-4 py-1.5 text-sm font-medium text-[var(--primary)]">
             Contacto
           </span>
@@ -18,10 +25,16 @@ export function Contact() {
             Estamos aquí para responder tus preguntas y ayudarte a encontrar los
             servicios que mejor se adapten a tus necesidades.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid gap-8 lg:grid-cols-2">
-          <div className="space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
             <ContactItem
               icon={Phone}
               title="Teléfono"
@@ -44,9 +57,15 @@ export function Contact() {
               title="Horario"
               content="Lunes a Viernes: 8:00 AM - 5:00 PM"
             />
-          </div>
+          </motion.div>
 
-          <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-8">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-8"
+          >
             <h3 className="mb-6 text-xl font-semibold text-[var(--card-foreground)]">
               Envíanos un mensaje
             </h3>
@@ -116,10 +135,16 @@ export function Contact() {
                 Enviar Mensaje
               </Button>
             </form>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="mt-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-12 text-center"
+        >
           <p className="mb-4 text-sm text-[var(--muted-foreground)]">
             Síguenos en redes sociales
           </p>
@@ -132,7 +157,7 @@ export function Contact() {
             <Facebook className="h-5 w-5" />
             Facebook
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

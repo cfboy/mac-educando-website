@@ -1,4 +1,5 @@
-import { Target, Eye, Heart } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Eye, Heart, Target } from 'lucide-react'
 
 export function About() {
   return (
@@ -7,7 +8,13 @@ export function About() {
       className="border-y border-[var(--border)] bg-[var(--muted)] py-20 sm:py-28"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mb-16 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16 text-center"
+        >
           <span className="mb-2 inline-block rounded-full bg-[var(--background)] px-4 py-1.5 text-sm font-medium text-[var(--primary)]">
             Sobre Nosotros
           </span>
@@ -15,10 +22,16 @@ export function About() {
             Comprometidos con la{' '}
             <span className="text-[var(--secondary)]">educación</span>
           </h2>
-        </div>
+        </motion.div>
 
         <div className="grid gap-8 lg:grid-cols-3">
-          <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-8 text-center"
+          >
             <div className="mx-auto mb-5 inline-flex rounded-full bg-[var(--accent)] p-4 text-[var(--primary)]">
               <Target className="h-7 w-7" />
             </div>
@@ -31,9 +44,15 @@ export function About() {
               crecimiento profesional, académico y personal en un ambiente de
               apoyo y confianza.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-8 text-center"
+          >
             <div className="bg-mac-orange-50 mx-auto mb-5 inline-flex rounded-full p-4 text-[var(--secondary)]">
               <Eye className="h-7 w-7" />
             </div>
@@ -45,9 +64,15 @@ export function About() {
               reconocido por la calidad de nuestros servicios y el impacto
               positivo en la vida de las familias y comunidades que servimos.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-8 text-center"
+          >
             <div className="mx-auto mb-5 inline-flex rounded-full bg-[var(--accent)] p-4 text-[var(--primary)]">
               <Heart className="h-7 w-7" />
             </div>
@@ -59,7 +84,7 @@ export function About() {
               dedicación para ofrecer un servicio personalizado que responda a
               las necesidades únicas de cada persona y su familia.
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
