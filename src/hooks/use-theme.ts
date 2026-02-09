@@ -1,27 +1,28 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
-type Theme = "light" | "dark"
+type Theme = 'light' | 'dark'
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("mac-theme") as Theme | null
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('mac-theme') as Theme | null
       if (stored) return stored
-      return window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light"
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light'
     }
-    return "light"
+    return 'light'
   })
 
   useEffect(() => {
     const root = document.documentElement
-    root.classList.remove("light", "dark")
+    root.classList.remove('light', 'dark')
     root.classList.add(theme)
-    localStorage.setItem("mac-theme", theme)
+    localStorage.setItem('mac-theme', theme)
   }, [theme])
 
-  const toggleTheme = () => setTheme((prev) => (prev === "light" ? "dark" : "light"))
+  const toggleTheme = () =>
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'))
 
   return { theme, setTheme, toggleTheme }
 }

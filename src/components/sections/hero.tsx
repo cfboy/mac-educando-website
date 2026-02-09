@@ -1,5 +1,6 @@
-import { ArrowDown, Phone } from "lucide-react"
-import { ButtonLink } from "@/components/ui/button"
+import { ArrowDown, Phone } from 'lucide-react'
+
+import { ButtonLink } from '@/components/ui/button'
 
 export function Hero() {
   return (
@@ -13,8 +14,8 @@ export function Hero() {
           className="h-full w-full"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 25% 25%, var(--primary) 1px, transparent 1px), radial-gradient(circle at 75% 75%, var(--secondary) 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
+              'radial-gradient(circle at 25% 25%, var(--primary) 1px, transparent 1px), radial-gradient(circle at 75% 75%, var(--secondary) 1px, transparent 1px)',
+            backgroundSize: '50px 50px',
           }}
         />
       </div>
@@ -32,14 +33,25 @@ export function Hero() {
         </h1>
 
         <p className="mx-auto mb-4 max-w-2xl text-lg text-[var(--muted-foreground)] sm:text-xl">
-          <span className="font-semibold text-[var(--primary)]">M Adviser and Consultant Inc.</span>
+          <span className="font-semibold text-[var(--primary)]">
+            M Adviser and Consultant Inc.
+          </span>
         </p>
 
         <p className="mx-auto mb-10 max-w-2xl text-base text-[var(--muted-foreground)] sm:text-lg">
-          Ofrecemos una amplia gama de servicios orientados al desarrollo{" "}
-          <span className="font-semibold text-[var(--foreground)]">Profesional</span>,{" "}
-          <span className="font-semibold text-[var(--foreground)]">Académico</span> y{" "}
-          <span className="font-semibold text-[var(--foreground)]">Personal</span>.
+          Ofrecemos una amplia gama de servicios orientados al desarrollo{' '}
+          <span className="font-semibold text-[var(--foreground)]">
+            Profesional
+          </span>
+          ,{' '}
+          <span className="font-semibold text-[var(--foreground)]">
+            Académico
+          </span>{' '}
+          y{' '}
+          <span className="font-semibold text-[var(--foreground)]">
+            Personal
+          </span>
+          .
         </p>
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -88,31 +100,137 @@ function HeroLogo({ className }: { className?: string }) {
       />
 
       {/* Branches */}
-      <path d="M100 60 C85 55 78 48 75 42" fill="none" stroke="#d4651a" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M100 60 C115 55 122 48 125 42" fill="none" stroke="#d4651a" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M100 50 C88 42 82 35 80 28" fill="none" stroke="#d4651a" strokeWidth="2" strokeLinecap="round" />
-      <path d="M100 50 C112 42 118 35 120 28" fill="none" stroke="#d4651a" strokeWidth="2" strokeLinecap="round" />
-      <path d="M100 42 C94 35 90 28 88 22" fill="none" stroke="#d4651a" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M100 42 C106 35 110 28 112 22" fill="none" stroke="#d4651a" strokeWidth="1.5" strokeLinecap="round" />
+      <path
+        d="M100 60 C85 55 78 48 75 42"
+        fill="none"
+        stroke="#d4651a"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M100 60 C115 55 122 48 125 42"
+        fill="none"
+        stroke="#d4651a"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M100 50 C88 42 82 35 80 28"
+        fill="none"
+        stroke="#d4651a"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M100 50 C112 42 118 35 120 28"
+        fill="none"
+        stroke="#d4651a"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M100 42 C94 35 90 28 88 22"
+        fill="none"
+        stroke="#d4651a"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M100 42 C106 35 110 28 112 22"
+        fill="none"
+        stroke="#d4651a"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
 
       {/* Leaves - dark green */}
-      <ellipse cx="75" cy="38" rx="10" ry="6" fill="#2d6a2e" transform="rotate(-35 75 38)" />
-      <ellipse cx="88" cy="20" rx="9" ry="5.5" fill="#1b441b" transform="rotate(-15 88 20)" />
+      <ellipse
+        cx="75"
+        cy="38"
+        rx="10"
+        ry="6"
+        fill="#2d6a2e"
+        transform="rotate(-35 75 38)"
+      />
+      <ellipse
+        cx="88"
+        cy="20"
+        rx="9"
+        ry="5.5"
+        fill="#1b441b"
+        transform="rotate(-15 88 20)"
+      />
       <ellipse cx="100" cy="14" rx="9" ry="5" fill="#2d6a2e" />
 
       {/* Leaves - light green */}
-      <ellipse cx="125" cy="38" rx="10" ry="6" fill="#7cb342" transform="rotate(35 125 38)" />
-      <ellipse cx="112" cy="20" rx="9" ry="5.5" fill="#4e9a47" transform="rotate(15 112 20)" />
-      <ellipse cx="68" cy="48" rx="8" ry="5" fill="#7cb342" transform="rotate(-25 68 48)" />
+      <ellipse
+        cx="125"
+        cy="38"
+        rx="10"
+        ry="6"
+        fill="#7cb342"
+        transform="rotate(35 125 38)"
+      />
+      <ellipse
+        cx="112"
+        cy="20"
+        rx="9"
+        ry="5.5"
+        fill="#4e9a47"
+        transform="rotate(15 112 20)"
+      />
+      <ellipse
+        cx="68"
+        cy="48"
+        rx="8"
+        ry="5"
+        fill="#7cb342"
+        transform="rotate(-25 68 48)"
+      />
 
       {/* Leaves - yellow accent */}
-      <ellipse cx="80" cy="28" rx="7" ry="4.5" fill="#ffd600" transform="rotate(-20 80 28)" />
-      <ellipse cx="132" cy="48" rx="8" ry="5" fill="#ffd600" transform="rotate(25 132 48)" />
-      <ellipse cx="120" cy="28" rx="7" ry="4.5" fill="#ffd600" transform="rotate(20 120 28)" />
+      <ellipse
+        cx="80"
+        cy="28"
+        rx="7"
+        ry="4.5"
+        fill="#ffd600"
+        transform="rotate(-20 80 28)"
+      />
+      <ellipse
+        cx="132"
+        cy="48"
+        rx="8"
+        ry="5"
+        fill="#ffd600"
+        transform="rotate(25 132 48)"
+      />
+      <ellipse
+        cx="120"
+        cy="28"
+        rx="7"
+        ry="4.5"
+        fill="#ffd600"
+        transform="rotate(20 120 28)"
+      />
 
       {/* Extra detail leaves */}
-      <ellipse cx="94" cy="30" rx="6" ry="4" fill="#4e9a47" transform="rotate(-10 94 30)" />
-      <ellipse cx="106" cy="30" rx="6" ry="4" fill="#2d6a2e" transform="rotate(10 106 30)" />
+      <ellipse
+        cx="94"
+        cy="30"
+        rx="6"
+        ry="4"
+        fill="#4e9a47"
+        transform="rotate(-10 94 30)"
+      />
+      <ellipse
+        cx="106"
+        cy="30"
+        rx="6"
+        ry="4"
+        fill="#2d6a2e"
+        transform="rotate(10 106 30)"
+      />
     </svg>
   )
 }

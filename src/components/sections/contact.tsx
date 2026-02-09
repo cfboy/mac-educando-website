@@ -1,5 +1,6 @@
-import { Phone, Mail, MapPin, Clock, Facebook } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Phone, Mail, MapPin, Clock, Facebook } from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
 
 export function Contact() {
   return (
@@ -10,12 +11,12 @@ export function Contact() {
             Contacto
           </span>
           <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-            ¿Cómo podemos{" "}
+            ¿Cómo podemos{' '}
             <span className="text-[var(--secondary)]">ayudarte</span>?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[var(--muted-foreground)]">
-            Estamos aquí para responder tus preguntas y ayudarte a encontrar los servicios
-            que mejor se adapten a tus necesidades.
+            Estamos aquí para responder tus preguntas y ayudarte a encontrar los
+            servicios que mejor se adapten a tus necesidades.
           </p>
         </div>
 
@@ -51,18 +52,23 @@ export function Contact() {
             </h3>
             <form
               className="space-y-4"
-              onSubmit={(e) => {
+              onSubmit={e => {
                 e.preventDefault()
                 const formData = new FormData(e.currentTarget)
-                const subject = encodeURIComponent("Consulta desde web - MAC Educando")
+                const subject = encodeURIComponent(
+                  'Consulta desde web - MAC Educando'
+                )
                 const body = encodeURIComponent(
-                  `Nombre: ${formData.get("name")}\n\n${formData.get("message")}`
+                  `Nombre: ${formData.get('name')}\n\n${formData.get('message')}`
                 )
                 window.location.href = `mailto:info@maceducando.com?subject=${subject}&body=${body}`
               }}
             >
               <div>
-                <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]">
+                <label
+                  htmlFor="name"
+                  className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]"
+                >
                   Nombre
                 </label>
                 <input
@@ -70,12 +76,15 @@ export function Contact() {
                   name="name"
                   type="text"
                   required
-                  className="w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:border-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]/20"
+                  className="w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--ring)]/20 focus:outline-none"
                   placeholder="Tu nombre"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]">
+                <label
+                  htmlFor="email"
+                  className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]"
+                >
                   Correo Electrónico
                 </label>
                 <input
@@ -83,12 +92,15 @@ export function Contact() {
                   name="email"
                   type="email"
                   required
-                  className="w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:border-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]/20"
+                  className="w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--ring)]/20 focus:outline-none"
                   placeholder="tu@correo.com"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]">
+                <label
+                  htmlFor="message"
+                  className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]"
+                >
                   Mensaje
                 </label>
                 <textarea
@@ -96,7 +108,7 @@ export function Contact() {
                   name="message"
                   required
                   rows={4}
-                  className="w-full resize-none rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:border-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]/20"
+                  className="w-full resize-none rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--ring)]/20 focus:outline-none"
                   placeholder="¿En qué podemos ayudarte?"
                 />
               </div>
@@ -108,7 +120,9 @@ export function Contact() {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="mb-4 text-sm text-[var(--muted-foreground)]">Síguenos en redes sociales</p>
+          <p className="mb-4 text-sm text-[var(--muted-foreground)]">
+            Síguenos en redes sociales
+          </p>
           <a
             href="https://www.facebook.com/MACAdviser/"
             target="_blank"
@@ -141,8 +155,12 @@ function ContactItem({
         <Icon className="h-5 w-5" />
       </div>
       <div>
-        <p className="text-sm font-medium text-[var(--muted-foreground)]">{title}</p>
-        <p className="mt-0.5 font-medium text-[var(--card-foreground)]">{content}</p>
+        <p className="text-sm font-medium text-[var(--muted-foreground)]">
+          {title}
+        </p>
+        <p className="mt-0.5 font-medium text-[var(--card-foreground)]">
+          {content}
+        </p>
       </div>
     </div>
   )

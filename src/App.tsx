@@ -1,10 +1,10 @@
-import { Navbar } from "@/components/sections/navbar"
-import { Hero } from "@/components/sections/hero"
-import { Services } from "@/components/sections/services"
-import { About } from "@/components/sections/about"
-import { Contact } from "@/components/sections/contact"
-import { Footer } from "@/components/sections/footer"
-import { useTheme } from "@/hooks/use-theme"
+import { About } from '@/components/sections/about'
+import { Contact } from '@/components/sections/contact'
+import { Footer } from '@/components/sections/footer'
+import { Hero } from '@/components/sections/hero'
+import { Navbar } from '@/components/sections/navbar'
+import { Services } from '@/components/sections/services'
+import { useTheme } from '@/hooks/use-theme'
 
 function App() {
   const { theme, toggleTheme } = useTheme()

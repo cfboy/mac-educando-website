@@ -1,18 +1,19 @@
-import { useState } from "react"
-import { Menu, X, Sun, Moon } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { Menu, X, Sun, Moon } from 'lucide-react'
+import { useState } from 'react'
+
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 interface NavbarProps {
-  theme: "light" | "dark"
+  theme: 'light' | 'dark'
   onToggleTheme: () => void
 }
 
 const NAV_LINKS = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#contacto", label: "Contacto" },
+  { href: '#inicio', label: 'Inicio' },
+  { href: '#servicios', label: 'Servicios' },
+  { href: '#nosotros', label: 'Nosotros' },
+  { href: '#contacto', label: 'Contacto' },
 ]
 
 export function Navbar({ theme, onToggleTheme }: NavbarProps) {
@@ -24,12 +25,15 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
         <a href="#inicio" className="flex items-center gap-2">
           <MacLogo className="h-10 w-10" />
           <span className="text-lg font-bold text-[var(--primary)]">
-            MAC <span className="hidden text-[var(--secondary)] sm:inline">Educando</span>
+            MAC{' '}
+            <span className="hidden text-[var(--secondary)] sm:inline">
+              Educando
+            </span>
           </span>
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.map(link => (
             <a
               key={link.href}
               href={link.href}
@@ -45,7 +49,11 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
             className="ml-2"
             aria-label="Cambiar tema"
           >
-            {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+            {theme === 'light' ? (
+              <Moon className="h-5 w-5" />
+            ) : (
+              <Sun className="h-5 w-5" />
+            )}
           </Button>
         </div>
 
@@ -56,7 +64,11 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
             onClick={onToggleTheme}
             aria-label="Cambiar tema"
           >
-            {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+            {theme === 'light' ? (
+              <Moon className="h-5 w-5" />
+            ) : (
+              <Sun className="h-5 w-5" />
+            )}
           </Button>
           <Button
             variant="ghost"
@@ -71,12 +83,12 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
 
       <div
         className={cn(
-          "overflow-hidden border-t border-[var(--border)] transition-all duration-300 md:hidden",
-          isOpen ? "max-h-64" : "max-h-0 border-t-0"
+          'overflow-hidden border-t border-[var(--border)] transition-all duration-300 md:hidden',
+          isOpen ? 'max-h-64' : 'max-h-0 border-t-0'
         )}
       >
         <div className="space-y-1 px-4 py-3">
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.map(link => (
             <a
               key={link.href}
               href={link.href}
@@ -108,11 +120,46 @@ function MacLogo({ className }: { className?: string }) {
         strokeWidth="3"
       />
       {/* Leaves */}
-      <ellipse cx="42" cy="25" rx="6" ry="4" fill="#2d6a2e" transform="rotate(-30 42 25)" />
-      <ellipse cx="50" cy="18" rx="5" ry="3.5" fill="#4e9a47" transform="rotate(0 50 18)" />
-      <ellipse cx="58" cy="25" rx="6" ry="4" fill="#7cb342" transform="rotate(30 58 25)" />
-      <ellipse cx="45" cy="32" rx="5" ry="3" fill="#ffd600" transform="rotate(-20 45 32)" />
-      <ellipse cx="55" cy="32" rx="5" ry="3" fill="#2d6a2e" transform="rotate(20 55 32)" />
+      <ellipse
+        cx="42"
+        cy="25"
+        rx="6"
+        ry="4"
+        fill="#2d6a2e"
+        transform="rotate(-30 42 25)"
+      />
+      <ellipse
+        cx="50"
+        cy="18"
+        rx="5"
+        ry="3.5"
+        fill="#4e9a47"
+        transform="rotate(0 50 18)"
+      />
+      <ellipse
+        cx="58"
+        cy="25"
+        rx="6"
+        ry="4"
+        fill="#7cb342"
+        transform="rotate(30 58 25)"
+      />
+      <ellipse
+        cx="45"
+        cy="32"
+        rx="5"
+        ry="3"
+        fill="#ffd600"
+        transform="rotate(-20 45 32)"
+      />
+      <ellipse
+        cx="55"
+        cy="32"
+        rx="5"
+        ry="3"
+        fill="#2d6a2e"
+        transform="rotate(20 55 32)"
+      />
     </svg>
   )
 }

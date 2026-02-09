@@ -1,4 +1,4 @@
-import { Phone, Mail, Facebook } from "lucide-react"
+import { Phone, Mail, Facebook } from 'lucide-react'
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -9,8 +9,12 @@ export function Footer() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <span className="text-lg font-bold text-[var(--primary)]">MAC</span>
-              <span className="text-lg font-bold text-[var(--secondary)]">Educando</span>
+              <span className="text-lg font-bold text-[var(--primary)]">
+                MAC
+              </span>
+              <span className="text-lg font-bold text-[var(--secondary)]">
+                Educando
+              </span>
             </div>
             <p className="text-sm text-[var(--muted-foreground)]">
               M Adviser and Consultant Inc.
@@ -25,11 +29,11 @@ export function Footer() {
             </h4>
             <nav className="space-y-2">
               {[
-                { href: "#inicio", label: "Inicio" },
-                { href: "#servicios", label: "Servicios" },
-                { href: "#nosotros", label: "Nosotros" },
-                { href: "#contacto", label: "Contacto" },
-              ].map((link) => (
+                { href: '#inicio', label: 'Inicio' },
+                { href: '#servicios', label: 'Servicios' },
+                { href: '#nosotros', label: 'Nosotros' },
+                { href: '#contacto', label: 'Contacto' },
+              ].map(link => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -75,7 +79,8 @@ export function Footer() {
 
         <div className="mt-10 border-t border-[var(--border)] pt-6 text-center">
           <p className="text-sm text-[var(--muted-foreground)]">
-            &copy; {year} MAC Educando &mdash; M Adviser and Consultant Inc. Todos los derechos reservados.
+            &copy; {year} MAC Educando &mdash; M Adviser and Consultant Inc.
+            Todos los derechos reservados.
           </p>
         </div>
       </div>
