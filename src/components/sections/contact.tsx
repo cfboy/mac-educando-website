@@ -134,10 +134,10 @@ export function Contact() {
                   <Send className="h-6 w-6" />
                 </div>
                 <p className="font-display text-card-foreground text-lg font-semibold">
-                  ¡Mensaje preparado!
+                  ¡Mensaje enviado!
                 </p>
                 <p className="text-muted-foreground mt-2 text-sm">
-                  Tu app de correo se abrirá con el mensaje listo para enviar.
+                  Recibimos tu mensaje. Te responderemos pronto.
                 </p>
                 <button
                   type="button"

@@ -137,10 +137,11 @@ export function Careers() {
                 <Send className="h-6 w-6" />
               </div>
               <p className="font-display text-card-foreground text-lg font-semibold">
-                ¡Solicitud preparada!
+                ¡Solicitud enviada!
               </p>
               <p className="text-muted-foreground mt-2 text-sm">
-                Tu app de correo se abrirá con la solicitud lista para enviar.
+                Recibimos tu solicitud. Nos pondremos en contacto contigo
+                pronto.
               </p>
               <button
                 type="button"
