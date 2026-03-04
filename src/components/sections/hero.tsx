@@ -84,7 +84,7 @@ export function Hero({ theme }: HeroProps) {
       <motion.div
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute left-[10%] top-1/4 h-16 w-16 rounded-full bg-primary opacity-[0.06] blur-xl"
+        className="bg-primary absolute top-1/4 left-[10%] h-16 w-16 rounded-full opacity-[0.06] blur-xl"
       />
       <motion.div
         animate={{ y: [0, 15, 0] }}
@@ -94,7 +94,7 @@ export function Hero({ theme }: HeroProps) {
           ease: 'easeInOut',
           delay: 2,
         }}
-        className="absolute bottom-1/3 right-[12%] h-24 w-24 rotate-12 rounded-2xl bg-secondary opacity-[0.05] blur-xl"
+        className="bg-secondary absolute right-[12%] bottom-1/3 h-24 w-24 rotate-12 rounded-2xl opacity-[0.05] blur-xl"
       />
       <motion.div
         animate={{ y: [0, -12, 0] }}
@@ -104,7 +104,7 @@ export function Hero({ theme }: HeroProps) {
           ease: 'easeInOut',
           delay: 4,
         }}
-        className="absolute bottom-1/4 left-[20%] h-12 w-12 rounded-lg bg-mac-leaf opacity-[0.06] blur-lg"
+        className="bg-mac-leaf absolute bottom-1/4 left-[20%] h-12 w-12 rounded-lg opacity-[0.06] blur-lg"
       />
 
       {/* Content */}
@@ -128,14 +128,14 @@ export function Hero({ theme }: HeroProps) {
 
         <motion.div
           variants={itemVariants}
-          className="mt-6 mb-2 font-display text-xs font-semibold tracking-widest text-muted-foreground uppercase"
+          className="font-display text-muted-foreground mt-6 mb-2 text-xs font-semibold tracking-widest uppercase"
         >
           M Adviser and Consultant Inc.
         </motion.div>
 
         <motion.h1
           variants={itemVariants}
-          className="mb-6 font-display tracking-tight"
+          className="font-display mb-6 tracking-tight"
         >
           <span className="text-foreground">Impulsamos el </span>
           <span className="text-primary">desarrollo integral</span>
@@ -146,7 +146,7 @@ export function Hero({ theme }: HeroProps) {
 
         <motion.p
           variants={itemVariants}
-          className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+          className="text-muted-foreground mx-auto mb-10 max-w-xl text-base leading-relaxed sm:text-lg"
         >
           Evaluaciones, terapias y apoyo educativo especializado en Puerto Rico
           &mdash; en oficina, escuelas o de forma virtual.
@@ -168,7 +168,7 @@ export function Hero({ theme }: HeroProps) {
         <motion.a
           variants={itemVariants}
           href="#servicios"
-          className="mt-16 inline-block animate-bounce text-muted-foreground transition-colors hover:text-primary"
+          className="text-muted-foreground hover:text-primary mt-16 inline-block animate-bounce transition-colors"
           aria-label="Ir a servicios"
         >
           <ArrowDown className="h-6 w-6" />

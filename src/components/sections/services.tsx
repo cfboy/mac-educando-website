@@ -182,15 +182,15 @@ export function Services() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <span className="font-display mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
-            <span className="h-px w-6 bg-primary" />
+          <span className="font-display text-primary mb-4 inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase">
+            <span className="bg-primary h-px w-6" />
             Nuestros Servicios
           </span>
           <h2 className="mt-2 font-semibold tracking-tight">
             Servicios orientados al{' '}
             <span className="text-secondary">desarrollo integral</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-pretty text-muted-foreground">
+          <p className="text-muted-foreground mx-auto mt-5 max-w-2xl text-pretty">
             Servicios especializados que apoyan el crecimiento académico,
             emocional y personal de cada estudiante.
           </p>
@@ -220,15 +220,15 @@ export function Services() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-20 text-center"
         >
-          <span className="font-display mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
-            <span className="h-px w-6 bg-primary" />
+          <span className="font-display text-primary mb-4 inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase">
+            <span className="bg-primary h-px w-6" />
             Modalidades
           </span>
           <h3 className="mt-2 font-semibold tracking-tight">
             ¿Dónde ofrecemos nuestros{' '}
             <span className="text-secondary">servicios</span>?
           </h3>
-          <p className="mx-auto mt-5 mb-12 max-w-2xl text-pretty text-muted-foreground">
+          <p className="text-muted-foreground mx-auto mt-5 mb-12 max-w-2xl text-pretty">
             Llegamos a donde nos necesites: en oficina, en la escuela o de forma
             virtual.
           </p>
@@ -273,10 +273,10 @@ function ServiceCard({
   return (
     <motion.div
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="group relative h-full overflow-hidden rounded-xl bg-card p-6"
+      className="group bg-card relative h-full overflow-hidden rounded-xl p-6"
     >
       {/* Default border */}
-      <div className="absolute inset-0 rounded-xl border border-border transition-all duration-300 group-hover:border-transparent" />
+      <div className="border-border absolute inset-0 rounded-xl border transition-all duration-300 group-hover:border-transparent" />
       {/* Gradient border on hover */}
       <div
         className="absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -290,26 +290,26 @@ function ServiceCard({
         }}
       />
       {/* Glow effect */}
-      <div className="absolute -inset-1 rounded-xl bg-primary opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-[0.06]" />
+      <div className="bg-primary absolute -inset-1 rounded-xl opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-[0.06]" />
 
       <div className="relative flex h-full flex-col">
         <motion.div
           whileHover={{ scale: 1.1, rotate: 3 }}
           transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-          className="mb-4 inline-flex rounded-lg bg-accent p-3 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground"
+          className="bg-accent text-primary group-hover:bg-primary group-hover:text-primary-foreground mb-4 inline-flex rounded-lg p-3 transition-colors duration-300"
         >
           <Icon className="h-6 w-6" />
         </motion.div>
-        <h3 className="font-display mb-2 font-semibold text-card-foreground">
+        <h3 className="font-display text-card-foreground mb-2 font-semibold">
           {service.title}
         </h3>
-        <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+        <p className="text-muted-foreground mb-4 flex-1 text-sm leading-relaxed">
           {service.description}
         </p>
         <button
           type="button"
           onClick={onSelect}
-          className="font-display inline-flex items-center gap-1 self-start text-sm font-medium text-primary transition-colors hover:text-secondary"
+          className="font-display text-primary hover:text-secondary inline-flex items-center gap-1 self-start text-sm font-medium transition-colors"
         >
           Más información
           <ChevronRight className="h-4 w-4" />
@@ -351,7 +351,7 @@ function ServiceModal({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 10 }}
           transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] as const }}
-          className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-border bg-card shadow-2xl"
+          className="border-border bg-card relative w-full max-w-lg overflow-hidden rounded-2xl border shadow-2xl"
           onClick={e => e.stopPropagation()}
         >
           {/* Decorative gradient top */}
@@ -367,17 +367,17 @@ function ServiceModal({
             {/* Header */}
             <div className="mb-6 flex items-start justify-between">
               <div className="flex items-center gap-3">
-                <div className="inline-flex rounded-lg bg-accent p-3 text-primary">
+                <div className="bg-accent text-primary inline-flex rounded-lg p-3">
                   <Icon className="h-6 w-6" />
                 </div>
-                <h3 className="font-display text-xl font-bold text-card-foreground">
+                <h3 className="font-display text-card-foreground text-xl font-bold">
                   {service.title}
                 </h3>
               </div>
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                className="text-muted-foreground hover:bg-accent hover:text-foreground rounded-lg p-2 transition-colors"
                 aria-label="Cerrar"
               >
                 <X className="h-5 w-5" />
@@ -385,33 +385,31 @@ function ServiceModal({
             </div>
 
             {/* Description */}
-            <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
+            <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
               {service.description}
             </p>
 
             {/* Details list */}
             <div className="space-y-3">
-              <h4 className="font-display text-sm font-semibold text-card-foreground">
+              <h4 className="font-display text-card-foreground text-sm font-semibold">
                 Detalles del servicio
               </h4>
               <ul className="space-y-3">
                 {service.details.map(detail => (
                   <li key={detail} className="flex gap-3 text-sm">
-                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-primary" />
-                    <span className="text-card-foreground">
-                      {detail}
-                    </span>
+                    <span className="bg-primary mt-1.5 h-2 w-2 shrink-0 rounded-full" />
+                    <span className="text-card-foreground">{detail}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* CTA */}
-            <div className="mt-8 border-t border-border pt-6">
+            <div className="border-border mt-8 border-t pt-6">
               <a
                 href="#contacto"
                 onClick={onClose}
-                className="font-display inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                className="font-display bg-primary text-primary-foreground inline-flex w-full items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-opacity hover:opacity-90"
               >
                 Solicitar este servicio
                 <ChevronRight className="h-4 w-4" />
@@ -429,9 +427,9 @@ function ModalityCard({ modality }: { modality: Modality }) {
   return (
     <motion.div
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="group relative h-full overflow-hidden rounded-xl bg-card p-6"
+      className="group bg-card relative h-full overflow-hidden rounded-xl p-6"
     >
-      <div className="absolute inset-0 rounded-xl border border-border transition-all duration-300 group-hover:border-transparent" />
+      <div className="border-border absolute inset-0 rounded-xl border transition-all duration-300 group-hover:border-transparent" />
       <div
         className="absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
@@ -448,23 +446,23 @@ function ModalityCard({ modality }: { modality: Modality }) {
         <motion.div
           whileHover={{ scale: 1.1, rotate: 3 }}
           transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-          className="mb-4 inline-flex rounded-lg bg-accent p-3 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground"
+          className="bg-accent text-primary group-hover:bg-primary group-hover:text-primary-foreground mb-4 inline-flex rounded-lg p-3 transition-colors duration-300"
         >
           <Icon className="h-6 w-6" />
         </motion.div>
-        <h4 className="font-display mb-1 font-semibold text-card-foreground">
+        <h4 className="font-display text-card-foreground mb-1 font-semibold">
           {modality.title}
         </h4>
-        <p className="mb-4 text-sm text-muted-foreground">
+        <p className="text-muted-foreground mb-4 text-sm">
           {modality.description}
         </p>
         <ul className="space-y-2">
           {modality.services.map(service => (
             <li
               key={service}
-              className="flex items-center gap-2 text-sm text-card-foreground"
+              className="text-card-foreground flex items-center gap-2 text-sm"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              <span className="bg-primary h-1.5 w-1.5 rounded-full" />
               {service}
             </li>
           ))}

@@ -21,6 +21,11 @@
       "sourceType": "github",
       "computedHash": "637be8675a5d6a6949e0ad34993b77082f719bc6384d46135987bc9f8b7fa64c"
     },
+    "seo-audit": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "computedHash": "27156d103697411bba81520fef469e77bfba4c65d904c841e4965a158d531fbd"
+    },
     "tailwind-design-system": {
       "source": "wshobson/agents",
       "sourceType": "github",

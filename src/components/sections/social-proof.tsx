@@ -41,7 +41,7 @@ const BADGES = [
 
 export function SocialProof() {
   return (
-    <section className="border-y border-border bg-muted py-12 sm:py-16">
+    <section className="border-border bg-muted border-y py-12 sm:py-16">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -66,9 +66,9 @@ export function SocialProof() {
           {BADGES.map(badge => (
             <div
               key={badge.label}
-              className="flex items-center gap-2 text-muted-foreground"
+              className="text-muted-foreground flex items-center gap-2"
             >
-              <badge.icon className="h-4 w-4 text-primary" />
+              <badge.icon className="text-primary h-4 w-4" />
               <span className="font-display text-xs font-medium sm:text-sm">
                 {badge.label}
               </span>
@@ -102,11 +102,11 @@ function AnimatedStat({
 
   return (
     <div ref={ref} className="text-center">
-      <div className="font-display text-4xl font-semibold text-primary sm:text-5xl">
+      <div className="font-display text-primary text-4xl font-semibold sm:text-5xl">
         <motion.span>{rounded}</motion.span>
         {stat.suffix || ''}
       </div>
-      <p className="mt-2 font-display text-xs tracking-wide text-muted-foreground sm:text-sm">
+      <p className="font-display text-muted-foreground mt-2 text-xs tracking-wide sm:text-sm">
         {stat.label}
       </p>
     </div>
