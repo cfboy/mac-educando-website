@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+VITE_WEB3FORMS_KEY=95118b9b-509d-42b1-a1f2-14910e85c123
+
+# Local env files
+.env.local

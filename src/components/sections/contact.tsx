@@ -1,9 +1,20 @@
+import { useForm } from '@tanstack/react-form'
 import { motion } from 'framer-motion'
 import { Clock, Facebook, Mail, Phone, Send } from 'lucide-react'
 import { useState } from 'react'
+import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
+import { CONTACT_EMAIL, WEB3FORMS_KEY } from '@/lib/constants'
 import { cn } from '@/lib/utils'
+
+const ContactSchema = z.object({
+  name: z.string().min(1, 'El nombre es requerido'),
+  email: z.email('Ingresa un correo válido'),
+  message: z.string().min(1, 'El mensaje es requerido'),
+})
+
+type ContactFormData = z.infer<typeof ContactSchema>
 
 const INPUT_BASE =
   'w-full rounded-lg border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:ring-2 focus:outline-none transition-colors'
@@ -11,47 +22,32 @@ const INPUT_VALID = 'border-border focus:border-primary focus:ring-ring/20'
 const INPUT_ERROR = 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
 
 export function Contact() {
-  const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitted, setSubmitted] = useState(false)
 
-  function validate(form: HTMLFormElement) {
-    const data = new FormData(form)
-    const newErrors: Record<string, string> = {}
-
-    if (!data.get('name')?.toString().trim()) {
-      newErrors.name = 'El nombre es requerido'
-    }
-
-    const email = data.get('email')?.toString().trim() || ''
-    if (!email) {
-      newErrors.email = 'El correo es requerido'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = 'Ingresa un correo válido'
-    }
-
-    if (!data.get('message')?.toString().trim()) {
-      newErrors.message = 'El mensaje es requerido'
-    }
-
-    return newErrors
-  }
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    const form = e.currentTarget
-    const newErrors = validate(form)
-    setErrors(newErrors)
-
-    if (Object.keys(newErrors).length > 0) return
-
-    const formData = new FormData(form)
-    const subject = encodeURIComponent('Consulta desde web - MAC Educando')
-    const body = encodeURIComponent(
-      `Nombre: ${formData.get('name')}\n\n${formData.get('message')}`
-    )
-    setSubmitted(true)
-    window.location.href = `mailto:info@maceducando.com?subject=${subject}&body=${body}`
-  }
+  const form = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+    } as ContactFormData,
+    validators: {
+      onSubmit: ContactSchema,
+    },
+    onSubmit: async ({ value }) => {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: 'Consulta desde web - MAC Educando',
+          from_name: value.name,
+          email: value.email,
+          message: value.message,
+        }),
+      })
+      if (res.ok) setSubmitted(true)
+    },
+  })
 
   return (
     <section id="contacto" className="scroll-mt-20 py-20 sm:py-28">
@@ -106,8 +102,8 @@ export function Contact() {
             <ContactItem
               icon={Mail}
               title="Correo Electrónico"
-              content="info@maceducando.com"
-              href="mailto:info@maceducando.com"
+              content={CONTACT_EMAIL}
+              href={`mailto:${CONTACT_EMAIL}`}
             />
             <ContactItem
               icon={Clock}
@@ -152,131 +148,149 @@ export function Contact() {
                 </button>
               </motion.div>
             ) : (
-              <form className="space-y-4" onSubmit={handleSubmit} noValidate>
-                <div>
-                  <label
-                    htmlFor="contact-name"
-                    className="text-card-foreground mb-1.5 block text-sm font-medium"
-                  >
-                    Nombre
-                  </label>
-                  <input
-                    id="contact-name"
-                    name="name"
-                    type="text"
-                    required
-                    aria-invalid={errors.name ? 'true' : undefined}
-                    aria-describedby={
-                      errors.name ? 'contact-name-error' : undefined
-                    }
-                    className={cn(
-                      INPUT_BASE,
-                      errors.name ? INPUT_ERROR : INPUT_VALID
-                    )}
-                    placeholder="Tu nombre"
-                    onChange={() =>
-                      errors.name &&
-                      setErrors(prev => {
-                        const { name: _, ...rest } = prev
-                        return rest
-                      })
-                    }
-                  />
-                  {errors.name && (
-                    <p
-                      id="contact-name-error"
-                      className="mt-1 text-xs text-red-500"
-                      role="alert"
-                    >
-                      {errors.name}
-                    </p>
-                  )}
-                </div>
+              <form
+                className="space-y-4"
+                onSubmit={e => {
+                  e.preventDefault()
+                  form.handleSubmit()
+                }}
+                noValidate
+              >
+                <form.Field name="name">
+                  {field => {
+                    const error = field.state.meta.errors[0]?.message
+                    return (
+                      <div>
+                        <label
+                          htmlFor="contact-name"
+                          className="text-card-foreground mb-1.5 block text-sm font-medium"
+                        >
+                          Nombre
+                        </label>
+                        <input
+                          id="contact-name"
+                          type="text"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={e => field.handleChange(e.target.value)}
+                          aria-invalid={error ? 'true' : undefined}
+                          aria-describedby={
+                            error ? 'contact-name-error' : undefined
+                          }
+                          className={cn(
+                            INPUT_BASE,
+                            error ? INPUT_ERROR : INPUT_VALID
+                          )}
+                          placeholder="Tu nombre"
+                        />
+                        {error && (
+                          <p
+                            id="contact-name-error"
+                            className="mt-1 text-xs text-red-500"
+                            role="alert"
+                          >
+                            {error}
+                          </p>
+                        )}
+                      </div>
+                    )
+                  }}
+                </form.Field>
 
-                <div>
-                  <label
-                    htmlFor="contact-email"
-                    className="text-card-foreground mb-1.5 block text-sm font-medium"
-                  >
-                    Correo Electrónico
-                  </label>
-                  <input
-                    id="contact-email"
-                    name="email"
-                    type="email"
-                    required
-                    aria-invalid={errors.email ? 'true' : undefined}
-                    aria-describedby={
-                      errors.email ? 'contact-email-error' : undefined
-                    }
-                    className={cn(
-                      INPUT_BASE,
-                      errors.email ? INPUT_ERROR : INPUT_VALID
-                    )}
-                    placeholder="tu@correo.com"
-                    onChange={() =>
-                      errors.email &&
-                      setErrors(prev => {
-                        const { email: _, ...rest } = prev
-                        return rest
-                      })
-                    }
-                  />
-                  {errors.email && (
-                    <p
-                      id="contact-email-error"
-                      className="mt-1 text-xs text-red-500"
-                      role="alert"
-                    >
-                      {errors.email}
-                    </p>
-                  )}
-                </div>
+                <form.Field name="email">
+                  {field => {
+                    const error = field.state.meta.errors[0]?.message
+                    return (
+                      <div>
+                        <label
+                          htmlFor="contact-email"
+                          className="text-card-foreground mb-1.5 block text-sm font-medium"
+                        >
+                          Correo Electrónico
+                        </label>
+                        <input
+                          id="contact-email"
+                          type="email"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={e => field.handleChange(e.target.value)}
+                          aria-invalid={error ? 'true' : undefined}
+                          aria-describedby={
+                            error ? 'contact-email-error' : undefined
+                          }
+                          className={cn(
+                            INPUT_BASE,
+                            error ? INPUT_ERROR : INPUT_VALID
+                          )}
+                          placeholder="tu@correo.com"
+                        />
+                        {error && (
+                          <p
+                            id="contact-email-error"
+                            className="mt-1 text-xs text-red-500"
+                            role="alert"
+                          >
+                            {error}
+                          </p>
+                        )}
+                      </div>
+                    )
+                  }}
+                </form.Field>
 
-                <div>
-                  <label
-                    htmlFor="contact-message"
-                    className="text-card-foreground mb-1.5 block text-sm font-medium"
-                  >
-                    Mensaje
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    required
-                    rows={4}
-                    aria-invalid={errors.message ? 'true' : undefined}
-                    aria-describedby={
-                      errors.message ? 'contact-message-error' : undefined
-                    }
-                    className={cn(
-                      INPUT_BASE,
-                      'resize-none',
-                      errors.message ? INPUT_ERROR : INPUT_VALID
-                    )}
-                    placeholder="¿En qué podemos ayudarte?"
-                    onChange={() =>
-                      errors.message &&
-                      setErrors(prev => {
-                        const { message: _, ...rest } = prev
-                        return rest
-                      })
-                    }
-                  />
-                  {errors.message && (
-                    <p
-                      id="contact-message-error"
-                      className="mt-1 text-xs text-red-500"
-                      role="alert"
-                    >
-                      {errors.message}
-                    </p>
-                  )}
-                </div>
+                <form.Field name="message">
+                  {field => {
+                    const error = field.state.meta.errors[0]?.message
+                    return (
+                      <div>
+                        <label
+                          htmlFor="contact-message"
+                          className="text-card-foreground mb-1.5 block text-sm font-medium"
+                        >
+                          Mensaje
+                        </label>
+                        <textarea
+                          id="contact-message"
+                          rows={4}
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={e => field.handleChange(e.target.value)}
+                          aria-invalid={error ? 'true' : undefined}
+                          aria-describedby={
+                            error ? 'contact-message-error' : undefined
+                          }
+                          className={cn(
+                            INPUT_BASE,
+                            'resize-none',
+                            error ? INPUT_ERROR : INPUT_VALID
+                          )}
+                          placeholder="¿En qué podemos ayudarte?"
+                        />
+                        {error && (
+                          <p
+                            id="contact-message-error"
+                            className="mt-1 text-xs text-red-500"
+                            role="alert"
+                          >
+                            {error}
+                          </p>
+                        )}
+                      </div>
+                    )
+                  }}
+                </form.Field>
 
-                <Button type="submit" className="w-full">
-                  Enviar Mensaje
-                </Button>
+                <form.Subscribe selector={state => state.isSubmitting}>
+                  {isSubmitting => (
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
+                      Enviar Mensaje
+                    </Button>
+                  )}
+                </form.Subscribe>
               </form>
             )}
           </motion.div>
