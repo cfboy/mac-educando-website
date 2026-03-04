@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Clock, Facebook, Mail, MapPin, Phone, Send } from 'lucide-react'
+import { Clock, Facebook, Mail, Phone, Send } from 'lucide-react'
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -88,15 +88,17 @@ export function Contact() {
             transition={{ duration: 0.6 }}
             className="space-y-4"
           >
-            {/* Location highlight card */}
-            <div className="rounded-xl border border-[var(--border)] bg-[var(--accent)] p-6 text-center">
-              <MapPin className="mx-auto mb-2 h-8 w-8 text-[var(--primary)]" />
-              <p className="font-display text-lg font-semibold text-[var(--primary)]">
-                Puerto Rico
-              </p>
-              <p className="mt-1 text-sm text-[var(--muted-foreground)]">
-                Servicios en toda la isla
-              </p>
+            {/* Embedded map */}
+            <div className="overflow-hidden rounded-xl border border-[var(--border)]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3786.3878206701515!2d-66.15711572563237!3d18.37519238269036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c036b891d715405%3A0xfdb2290afeb9680e!2sM%20ADViser%20and%20consultant!5e0!3m2!1sen!2spr!4v1772585274883!5m2!1sen!2spr"
+                className="h-52 w-full"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Ubicación de M Adviser and Consultant"
+              />
             </div>
 
             <ContactItem

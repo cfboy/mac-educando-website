@@ -6,10 +6,20 @@
       "sourceType": "github",
       "computedHash": "5cafa1558b0b6bd4d4c71f23d5567b7fcbbcdb4b0a50b0c5f69a80a3cebaf9b8"
     },
+    "copy-editing": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "computedHash": "ad42a2dc8c5c04795459445aff4896846f720e618ad70d4122aa712027a98ae5"
+    },
     "frontend-design": {
       "source": "anthropics/skills",
       "sourceType": "github",
       "computedHash": "063a0e6448123cd359ad0044cc46b0e490cc7964d45ef4bb9fd842bd2ffbca67"
+    },
+    "landing-page-guide-v2": {
+      "source": "bear2u/my-skills",
+      "sourceType": "github",
+      "computedHash": "637be8675a5d6a6949e0ad34993b77082f719bc6384d46135987bc9f8b7fa64c"
     },
     "web-design-guidelines": {
       "source": "vercel-labs/agent-skills",
