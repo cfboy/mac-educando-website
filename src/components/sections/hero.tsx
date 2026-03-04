@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown, Phone } from 'lucide-react'
+import { useRef } from 'react'
 
 import fullLogoLight from '@/assets/images/logos/full-logo-light.png'
 import fullLogoDark from '@/assets/images/logos/full-logo.png'
@@ -9,84 +10,154 @@ interface HeroProps {
   theme: 'light' | 'dark'
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30, filter: 'blur(8px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+  },
+}
+
 export function Hero({ theme }: HeroProps) {
   const logoSrc = theme === 'light' ? fullLogoLight : fullLogoDark
+  const heroRef = useRef<HTMLElement>(null)
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  })
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const contentScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
+
   return (
     <section
+      ref={heroRef}
       id="inicio"
       className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16"
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
+      {/* Gradient mesh background */}
+      <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
         <div
-          className="h-full w-full"
+          className="absolute inset-0 opacity-30 dark:opacity-20"
+          style={{
+            background: `
+              radial-gradient(ellipse 80% 50% at 20% 40%, rgba(45,106,46,0.3), transparent),
+              radial-gradient(ellipse 60% 40% at 80% 20%, rgba(232,117,26,0.15), transparent),
+              radial-gradient(ellipse 50% 60% at 60% 80%, rgba(124,179,66,0.2), transparent)
+            `,
+          }}
+        />
+        {/* Noise texture overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          }}
+        />
+        {/* Dot pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
               'radial-gradient(circle at 25% 25%, var(--primary) 1px, transparent 1px), radial-gradient(circle at 75% 75%, var(--secondary) 1px, transparent 1px)',
             backgroundSize: '50px 50px',
           }}
         />
-      </div>
+      </motion.div>
 
-      <div className="relative mx-auto max-w-6xl px-4 py-20 text-center sm:px-6">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
-        >
-          <span className="text-[var(--primary)]">Centro de Servicios</span>
-          <br />
-          <span className="text-[var(--secondary)]">Educativos</span>
-        </motion.h1>
-        {/* Logo mark */}
+      {/* Floating decorative elements */}
+      <motion.div
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute left-[10%] top-1/4 h-16 w-16 rounded-full bg-[var(--primary)] opacity-[0.06] blur-xl"
+      />
+      <motion.div
+        animate={{ y: [0, 15, 0] }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: 'easeInOut',
+          delay: 2,
+        }}
+        className="absolute bottom-1/3 right-[12%] h-24 w-24 rotate-12 rounded-2xl bg-[var(--secondary)] opacity-[0.05] blur-xl"
+      />
+      <motion.div
+        animate={{ y: [0, -12, 0] }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: 'easeInOut',
+          delay: 4,
+        }}
+        className="absolute bottom-1/4 left-[20%] h-12 w-12 rounded-lg bg-mac-leaf opacity-[0.06] blur-lg"
+      />
+
+      {/* Content */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        style={{ opacity: contentOpacity, scale: contentScale }}
+        className="relative mx-auto max-w-6xl px-4 py-20 text-center sm:px-6"
+      >
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto"
+          variants={itemVariants}
+          className="mb-2 inline-block rounded-full bg-[var(--accent)] px-4 py-1.5 font-display text-sm font-medium text-[var(--primary)]"
         >
+          M Adviser and Consultant Inc.
+        </motion.div>
+
+        <motion.h1
+          variants={itemVariants}
+          className="mb-6 font-display tracking-tight"
+        >
+          <span className="text-[var(--foreground)]">Impulsamos el </span>
+          <span className="text-[var(--primary)]">desarrollo integral</span>
+          <br />
+          <span className="text-[var(--foreground)]">de cada </span>
+          <span className="text-[var(--secondary)]">estudiante</span>
+        </motion.h1>
+
+        <motion.div variants={itemVariants} className="mx-auto">
           <img
             src={logoSrc}
             alt="MAC Educando Logo"
-            className="mx-auto h-48 w-auto sm:h-64 md:h-80"
+            className="mx-auto h-40 w-auto sm:h-52 md:h-64"
+            decoding="async"
+            width="256"
+            height="256"
           />
         </motion.div>
-        {/* <p className="mx-auto mb-4 max-w-2xl text-lg text-[var(--muted-foreground)] sm:text-xl">
-          <span className="font-semibold text-[var(--primary)]">
-            M Adviser and Consultant Inc.
-          </span>
-        </p> */}
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mx-auto mb-10 max-w-2xl text-base text-[var(--muted-foreground)] sm:text-lg"
+          variants={itemVariants}
+          className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-[var(--muted-foreground)] sm:text-lg"
         >
-          Ofrecemos una amplia gama de servicios orientados al desarrollo{' '}
-          <span className="font-semibold text-[var(--foreground)]">
-            Profesional
-          </span>
-          ,{' '}
-          <span className="font-semibold text-[var(--foreground)]">
-            Académico
-          </span>{' '}
-          y{' '}
-          <span className="font-semibold text-[var(--foreground)]">
-            Personal
-          </span>
-          .
+          Evaluaciones, terapias y servicios educativos especializados en Puerto
+          Rico &mdash; en oficina, escuelas y de forma virtual.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          variants={itemVariants}
           className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <ButtonLink href="#servicios" size="lg">
-            Nuestros Servicios
+            Conoce Nuestros Servicios
           </ButtonLink>
           <ButtonLink href="#contacto" variant="outline" size="lg">
             <Phone className="h-4 w-4" />
@@ -95,16 +166,14 @@ export function Hero({ theme }: HeroProps) {
         </motion.div>
 
         <motion.a
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          variants={itemVariants}
           href="#servicios"
           className="mt-16 inline-block animate-bounce text-[var(--muted-foreground)] transition-colors hover:text-[var(--primary)]"
           aria-label="Ir a servicios"
         >
           <ArrowDown className="h-6 w-6" />
         </motion.a>
-      </div>
+      </motion.div>
     </section>
   )
 }

@@ -1,30 +1,43 @@
-import { Phone, Mail, Facebook } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { ArrowUp, Facebook, Mail, Phone } from 'lucide-react'
 
 export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-[var(--border)] bg-[var(--muted)]">
+    <footer className="relative bg-[var(--muted)]">
+      {/* Gradient top border */}
+      <div
+        className="h-px w-full"
+        style={{
+          background:
+            'linear-gradient(to right, transparent, var(--primary), var(--secondary), transparent)',
+        }}
+      />
+
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Brand */}
           <div>
-            <div className="mb-4 flex items-center gap-2">
-              <span className="text-lg font-bold text-[var(--primary)]">
+            <div className="mb-4 flex items-center gap-1">
+              <span className="font-display text-lg font-bold text-[var(--primary)]">
                 MAC
               </span>
-              <span className="text-lg font-bold text-[var(--secondary)]">
+              <span className="font-display text-lg font-bold text-[var(--secondary)]">
                 Educando
               </span>
             </div>
-            <p className="text-sm text-[var(--muted-foreground)]">
+            <p className="text-sm leading-relaxed text-[var(--muted-foreground)]">
               M Adviser and Consultant Inc.
               <br />
-              Centro de Servicios Educativos
+              Centro de Servicios Educativos en Puerto Rico, comprometidos con el
+              desarrollo integral.
             </p>
           </div>
 
+          {/* Navigation */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold text-[var(--foreground)]">
+            <h4 className="mb-4 font-display text-sm font-semibold text-[var(--foreground)]">
               Enlaces
             </h4>
             <nav className="space-y-2">
@@ -33,6 +46,7 @@ export function Footer() {
                 { href: '#servicios', label: 'Servicios' },
                 { href: '#nosotros', label: 'Nosotros' },
                 { href: '#contacto', label: 'Contacto' },
+                { href: '#empleo', label: 'Empleo' },
               ].map(link => (
                 <a
                   key={link.href}
@@ -45,8 +59,33 @@ export function Footer() {
             </nav>
           </div>
 
+          {/* Services quick links */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold text-[var(--foreground)]">
+            <h4 className="mb-4 font-display text-sm font-semibold text-[var(--foreground)]">
+              Servicios
+            </h4>
+            <nav className="space-y-2">
+              {[
+                'Evaluaciones',
+                'Terapia Psicológica',
+                'Terapia del Habla',
+                'Terapia Ocupacional',
+                'Desarrollo Académico',
+              ].map(service => (
+                <a
+                  key={service}
+                  href="#servicios"
+                  className="block text-sm text-[var(--muted-foreground)] transition-colors hover:text-[var(--primary)]"
+                >
+                  {service}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="mb-4 font-display text-sm font-semibold text-[var(--foreground)]">
               Contacto
             </h4>
             <div className="space-y-3">
@@ -77,11 +116,21 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-[var(--border)] pt-6 text-center">
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-[var(--border)] pt-6 sm:flex-row">
           <p className="text-sm text-[var(--muted-foreground)]">
             &copy; {year} MAC Educando &mdash; M Adviser and Consultant Inc.
             Todos los derechos reservados.
           </p>
+          <motion.a
+            href="#inicio"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-1 font-display text-sm font-medium text-[var(--muted-foreground)] transition-colors hover:text-[var(--primary)]"
+            aria-label="Volver al inicio"
+          >
+            <ArrowUp className="h-4 w-4" />
+            Volver al inicio
+          </motion.a>
         </div>
       </div>
     </footer>
