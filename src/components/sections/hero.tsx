@@ -41,8 +41,8 @@ export function Hero({ theme }: HeroProps) {
   })
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const contentScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+  const contentScale = useTransform(scrollYProgress, [0, 0.8], [1, 0.95])
 
   return (
     <section
@@ -74,7 +74,7 @@ export function Hero({ theme }: HeroProps) {
           className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
-              'radial-gradient(circle at 25% 25%, var(--primary) 1px, transparent 1px), radial-gradient(circle at 75% 75%, var(--secondary) 1px, transparent 1px)',
+              'radial-gradient(circle at 25% 25%, var(--color-primary) 1px, transparent 1px), radial-gradient(circle at 75% 75%, var(--color-secondary) 1px, transparent 1px)',
             backgroundSize: '50px 50px',
           }}
         />
@@ -84,7 +84,7 @@ export function Hero({ theme }: HeroProps) {
       <motion.div
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute left-[10%] top-1/4 h-16 w-16 rounded-full bg-[var(--primary)] opacity-[0.06] blur-xl"
+        className="absolute left-[10%] top-1/4 h-16 w-16 rounded-full bg-primary opacity-[0.06] blur-xl"
       />
       <motion.div
         animate={{ y: [0, 15, 0] }}
@@ -94,7 +94,7 @@ export function Hero({ theme }: HeroProps) {
           ease: 'easeInOut',
           delay: 2,
         }}
-        className="absolute bottom-1/3 right-[12%] h-24 w-24 rotate-12 rounded-2xl bg-[var(--secondary)] opacity-[0.05] blur-xl"
+        className="absolute bottom-1/3 right-[12%] h-24 w-24 rotate-12 rounded-2xl bg-secondary opacity-[0.05] blur-xl"
       />
       <motion.div
         animate={{ y: [0, -12, 0] }}
@@ -115,9 +115,20 @@ export function Hero({ theme }: HeroProps) {
         style={{ opacity: contentOpacity, scale: contentScale }}
         className="relative mx-auto max-w-6xl px-4 py-20 text-center sm:px-6"
       >
+        <motion.div variants={itemVariants} className="mx-auto">
+          <img
+            src={logoSrc}
+            alt="MAC Educando Logo"
+            className="mx-auto h-28 w-auto sm:h-36"
+            decoding="async"
+            width="256"
+            height="256"
+          />
+        </motion.div>
+
         <motion.div
           variants={itemVariants}
-          className="mb-2 inline-block rounded-full bg-[var(--accent)] px-4 py-1.5 font-display text-sm font-medium text-[var(--primary)]"
+          className="mt-6 mb-2 font-display text-xs font-semibold tracking-widest text-muted-foreground uppercase"
         >
           M Adviser and Consultant Inc.
         </motion.div>
@@ -126,27 +137,16 @@ export function Hero({ theme }: HeroProps) {
           variants={itemVariants}
           className="mb-6 font-display tracking-tight"
         >
-          <span className="text-[var(--foreground)]">Impulsamos el </span>
-          <span className="text-[var(--primary)]">desarrollo integral</span>
+          <span className="text-foreground">Impulsamos el </span>
+          <span className="text-primary">desarrollo integral</span>
           <br />
-          <span className="text-[var(--foreground)]">de cada </span>
-          <span className="text-[var(--secondary)]">estudiante</span>
+          <span className="text-foreground">de cada </span>
+          <span className="text-secondary">estudiante</span>
         </motion.h1>
-
-        <motion.div variants={itemVariants} className="mx-auto">
-          <img
-            src={logoSrc}
-            alt="MAC Educando Logo"
-            className="mx-auto h-40 w-auto sm:h-52 md:h-64"
-            decoding="async"
-            width="256"
-            height="256"
-          />
-        </motion.div>
 
         <motion.p
           variants={itemVariants}
-          className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-[var(--muted-foreground)] sm:text-lg"
+          className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
           Evaluaciones, terapias y servicios educativos especializados en Puerto
           Rico &mdash; en oficina, escuelas y de forma virtual.
@@ -168,7 +168,7 @@ export function Hero({ theme }: HeroProps) {
         <motion.a
           variants={itemVariants}
           href="#servicios"
-          className="mt-16 inline-block animate-bounce text-[var(--muted-foreground)] transition-colors hover:text-[var(--primary)]"
+          className="mt-16 inline-block animate-bounce text-muted-foreground transition-colors hover:text-primary"
           aria-label="Ir a servicios"
         >
           <ArrowDown className="h-6 w-6" />

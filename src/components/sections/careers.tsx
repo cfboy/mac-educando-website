@@ -6,9 +6,8 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 const INPUT_BASE =
-  'w-full rounded-lg border bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:ring-2 focus:outline-none transition-colors'
-const INPUT_VALID =
-  'border-[var(--border)] focus:border-[var(--primary)] focus:ring-[var(--ring)]/20'
+  'w-full rounded-lg border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:ring-2 focus:outline-none transition-colors'
+const INPUT_VALID = 'border-border focus:border-primary focus:ring-ring/20'
 
 const TOTAL_STEPS = 2
 
@@ -16,7 +15,7 @@ export function Careers() {
   const [step, setStep] = useState(1)
 
   return (
-    <section id="empleo" className="py-20 sm:py-28">
+    <section id="empleo" className="scroll-mt-20 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,14 +24,14 @@ export function Careers() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <span className="mb-2 inline-block rounded-full bg-[var(--accent)] px-4 py-1.5 font-display text-sm font-medium text-[var(--primary)]">
+          <span className="font-display text-primary mb-4 inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase">
+            <span className="bg-primary h-px w-6" />
             Únete a Nuestro Equipo
           </span>
-          <h2 className="mt-4 font-bold tracking-tight">
-            Solicitud de{' '}
-            <span className="text-[var(--secondary)]">Empleo</span>
+          <h2 className="mt-2 font-semibold tracking-tight">
+            Solicitud de <span className="text-secondary">Empleo</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-[var(--muted-foreground)]">
+          <p className="text-muted-foreground mx-auto mt-5 max-w-2xl text-pretty">
             ¿Te apasiona la educación y el desarrollo integral? Completa el
             formulario y forma parte de nuestro equipo de profesionales.
           </p>
@@ -43,14 +42,14 @@ export function Careers() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto max-w-2xl rounded-xl border border-[var(--border)] bg-[var(--card)] p-8"
+          className="border-border bg-card mx-auto max-w-2xl rounded-xl border p-8"
         >
           {/* Header */}
           <div className="mb-6 flex items-center gap-3">
-            <div className="inline-flex rounded-lg bg-[var(--accent)] p-3 text-[var(--primary)]">
+            <div className="bg-accent text-primary inline-flex rounded-lg p-3">
               <Briefcase className="h-5 w-5" />
             </div>
-            <h3 className="font-display text-xl font-semibold text-[var(--card-foreground)]">
+            <h3 className="font-display text-card-foreground text-xl font-semibold">
               Información del Solicitante
             </h3>
           </div>
@@ -58,18 +57,18 @@ export function Careers() {
           {/* Progress bar */}
           <div className="mb-8">
             <div className="mb-2 flex items-center justify-between">
-              <span className="font-display text-sm font-medium text-[var(--card-foreground)]">
+              <span className="font-display text-card-foreground text-sm font-medium">
                 Paso {step} de {TOTAL_STEPS}
               </span>
-              <span className="text-xs text-[var(--muted-foreground)]">
+              <span className="text-muted-foreground text-xs">
                 {step === 1
                   ? 'Información Personal'
                   : 'Información Profesional'}
               </span>
             </div>
-            <div className="h-2 overflow-hidden rounded-full bg-[var(--accent)]">
+            <div className="bg-accent h-2 overflow-hidden rounded-full">
               <motion.div
-                className="h-full rounded-full bg-[var(--primary)]"
+                className="bg-primary h-full rounded-full"
                 initial={false}
                 animate={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
@@ -88,13 +87,13 @@ export function Careers() {
                   transition={{ duration: 0.25 }}
                   className="space-y-4"
                 >
-                  <legend className="mb-2 font-display text-sm font-semibold text-[var(--card-foreground)]">
+                  <legend className="font-display text-card-foreground mb-2 text-sm font-semibold">
                     Información Personal
                   </legend>
                   <div>
                     <label
                       htmlFor="fullname"
-                      className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]"
+                      className="text-card-foreground mb-1.5 block text-sm font-medium"
                     >
                       Nombre Completo
                     </label>
@@ -111,7 +110,7 @@ export function Careers() {
                     <div>
                       <label
                         htmlFor="career-email"
-                        className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]"
+                        className="text-card-foreground mb-1.5 block text-sm font-medium"
                       >
                         Correo Electrónico
                       </label>
@@ -127,7 +126,7 @@ export function Careers() {
                     <div>
                       <label
                         htmlFor="phone"
-                        className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]"
+                        className="text-card-foreground mb-1.5 block text-sm font-medium"
                       >
                         Teléfono
                       </label>
@@ -164,13 +163,13 @@ export function Careers() {
                   transition={{ duration: 0.25 }}
                   className="space-y-4"
                 >
-                  <legend className="mb-2 font-display text-sm font-semibold text-[var(--card-foreground)]">
+                  <legend className="font-display text-card-foreground mb-2 text-sm font-semibold">
                     Información Profesional
                   </legend>
                   <div>
                     <label
                       htmlFor="specialty"
-                      className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]"
+                      className="text-card-foreground mb-1.5 block text-sm font-medium"
                     >
                       Especialidad
                     </label>
@@ -186,7 +185,7 @@ export function Careers() {
                   <div>
                     <label
                       htmlFor="degree"
-                      className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]"
+                      className="text-card-foreground mb-1.5 block text-sm font-medium"
                     >
                       Grado Académico
                     </label>
@@ -209,10 +208,10 @@ export function Careers() {
                   <div>
                     <label
                       htmlFor="career-notes"
-                      className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]"
+                      className="text-card-foreground mb-1.5 block text-sm font-medium"
                     >
                       Notas Adicionales{' '}
-                      <span className="font-normal text-[var(--muted-foreground)]">
+                      <span className="text-muted-foreground font-normal">
                         (opcional)
                       </span>
                     </label>

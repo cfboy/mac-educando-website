@@ -6,11 +6,9 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 const INPUT_BASE =
-  'w-full rounded-lg border bg-[var(--background)] px-4 py-2.5 text-sm text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:ring-2 focus:outline-none transition-colors'
-const INPUT_VALID =
-  'border-[var(--border)] focus:border-[var(--primary)] focus:ring-[var(--ring)]/20'
-const INPUT_ERROR =
-  'border-red-500 focus:border-red-500 focus:ring-red-500/20'
+  'w-full rounded-lg border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:ring-2 focus:outline-none transition-colors'
+const INPUT_VALID = 'border-border focus:border-primary focus:ring-ring/20'
+const INPUT_ERROR = 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
 
 export function Contact() {
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -47,9 +45,7 @@ export function Contact() {
     if (Object.keys(newErrors).length > 0) return
 
     const formData = new FormData(form)
-    const subject = encodeURIComponent(
-      'Consulta desde web - MAC Educando'
-    )
+    const subject = encodeURIComponent('Consulta desde web - MAC Educando')
     const body = encodeURIComponent(
       `Nombre: ${formData.get('name')}\n\n${formData.get('message')}`
     )
@@ -58,7 +54,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contacto" className="py-20 sm:py-28">
+    <section id="contacto" className="scroll-mt-20 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,14 +63,14 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <span className="mb-2 inline-block rounded-full bg-[var(--accent)] px-4 py-1.5 font-display text-sm font-medium text-[var(--primary)]">
+          <span className="font-display text-primary mb-4 inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase">
+            <span className="bg-primary h-px w-6" />
             Contacto
           </span>
-          <h2 className="mt-4 font-bold tracking-tight">
-            ¿Cómo podemos{' '}
-            <span className="text-[var(--secondary)]">ayudarte</span>?
+          <h2 className="mt-2 font-semibold tracking-tight">
+            ¿Cómo podemos <span className="text-secondary">ayudarte</span>?
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-[var(--muted-foreground)]">
+          <p className="text-muted-foreground mx-auto mt-5 max-w-2xl text-pretty">
             Estamos aquí para responder tus preguntas y ayudarte a encontrar los
             servicios que mejor se adapten a tus necesidades.
           </p>
@@ -89,7 +85,7 @@ export function Contact() {
             className="space-y-4"
           >
             {/* Embedded map */}
-            <div className="overflow-hidden rounded-xl border border-[var(--border)]">
+            <div className="border-border overflow-hidden rounded-xl border">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3786.3878206701515!2d-66.15711572563237!3d18.37519238269036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c036b891d715405%3A0xfdb2290afeb9680e!2sM%20ADViser%20and%20consultant!5e0!3m2!1sen!2spr!4v1772585274883!5m2!1sen!2spr"
                 className="h-52 w-full"
@@ -126,9 +122,9 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-8"
+            className="border-border bg-card rounded-xl border p-8"
           >
-            <h3 className="mb-6 font-display text-xl font-semibold text-[var(--card-foreground)]">
+            <h3 className="font-display text-card-foreground mb-6 text-xl font-semibold">
               Envíanos un mensaje
             </h3>
 
@@ -138,20 +134,20 @@ export function Contact() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="py-12 text-center"
               >
-                <div className="mx-auto mb-4 inline-flex rounded-full bg-[var(--accent)] p-4 text-[var(--primary)]">
-                  <Send className="h-8 w-8" />
+                <div className="bg-accent text-primary mx-auto mb-4 inline-flex rounded-xl p-3">
+                  <Send className="h-6 w-6" />
                 </div>
-                <p className="font-display text-lg font-semibold text-[var(--card-foreground)]">
+                <p className="font-display text-card-foreground text-lg font-semibold">
                   ¡Mensaje preparado!
                 </p>
-                <p className="mt-2 text-sm text-[var(--muted-foreground)]">
+                <p className="text-muted-foreground mt-2 text-sm">
                   Tu cliente de correo se abrirá con el mensaje listo para
                   enviar.
                 </p>
                 <button
                   type="button"
                   onClick={() => setSubmitted(false)}
-                  className="mt-4 text-sm font-medium text-[var(--primary)] hover:underline"
+                  className="text-primary mt-4 text-sm font-medium hover:underline"
                 >
                   Enviar otro mensaje
                 </button>
@@ -161,7 +157,7 @@ export function Contact() {
                 <div>
                   <label
                     htmlFor="contact-name"
-                    className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]"
+                    className="text-card-foreground mb-1.5 block text-sm font-medium"
                   >
                     Nombre
                   </label>
@@ -201,7 +197,7 @@ export function Contact() {
                 <div>
                   <label
                     htmlFor="contact-email"
-                    className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]"
+                    className="text-card-foreground mb-1.5 block text-sm font-medium"
                   >
                     Correo Electrónico
                   </label>
@@ -241,7 +237,7 @@ export function Contact() {
                 <div>
                   <label
                     htmlFor="contact-message"
-                    className="mb-1.5 block text-sm font-medium text-[var(--card-foreground)]"
+                    className="text-card-foreground mb-1.5 block text-sm font-medium"
                   >
                     Mensaje
                   </label>
@@ -294,14 +290,14 @@ export function Contact() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-12 text-center"
         >
-          <p className="mb-4 text-sm text-[var(--muted-foreground)]">
+          <p className="text-muted-foreground mb-4 text-sm">
             Síguenos en redes sociales
           </p>
           <a
             href="https://www.facebook.com/MACAdviser/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] px-5 py-2.5 font-display text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--primary)] hover:text-[var(--primary)]"
+            className="font-display border-border text-foreground hover:border-primary hover:text-primary inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium transition-colors"
           >
             <Facebook className="h-5 w-5" />
             Facebook
@@ -329,23 +325,19 @@ function ContactItem({
     <motion.div
       whileHover={{ x: 4 }}
       transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-      className="group relative flex items-start gap-4 overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 transition-colors hover:border-[var(--primary)]"
+      className="group border-border bg-card hover:border-primary relative flex items-start gap-4 overflow-hidden rounded-xl border p-5 transition-colors"
     >
-      <div className="absolute bottom-0 left-0 top-0 w-1 bg-[var(--primary)] opacity-0 transition-opacity group-hover:opacity-100" />
-      <div className="inline-flex rounded-lg bg-[var(--accent)] p-3 text-[var(--primary)]">
+      <div className="bg-primary absolute top-0 bottom-0 left-0 w-1 opacity-0 transition-opacity group-hover:opacity-100" />
+      <div className="bg-accent text-primary inline-flex rounded-lg p-3">
         <Icon className="h-5 w-5" />
       </div>
       <div>
-        <p className="font-display text-sm font-medium text-[var(--muted-foreground)]">
+        <p className="font-display text-muted-foreground text-sm font-medium">
           {title}
         </p>
-        <p className="mt-0.5 font-medium text-[var(--card-foreground)]">
-          {content}
-        </p>
+        <p className="text-card-foreground mt-0.5 font-medium">{content}</p>
         {subtitle && (
-          <p className="mt-1 text-xs text-[var(--muted-foreground)]">
-            {subtitle}
-          </p>
+          <p className="text-muted-foreground mt-1 text-xs">{subtitle}</p>
         )}
       </div>
     </motion.div>
