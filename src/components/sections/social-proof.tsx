@@ -41,7 +41,10 @@ const BADGES = [
 
 export function SocialProof() {
   return (
-    <section className="border-border bg-muted border-y py-12 sm:py-16">
+    <section
+      aria-label="Resultados e impacto"
+      className="border-border bg-muted border-y py-12 sm:py-16"
+    >
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -49,6 +52,7 @@ export function SocialProof() {
         viewport={{ once: true, margin: '-40px' }}
         className="mx-auto max-w-6xl px-4 sm:px-6"
       >
+        <h2 className="sr-only">Nuestro Impacto en Números</h2>
         {/* Animated stat counters */}
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           {STATS.map(stat => (
@@ -68,7 +72,7 @@ export function SocialProof() {
               key={badge.label}
               className="text-muted-foreground flex items-center gap-2"
             >
-              <badge.icon className="text-primary h-4 w-4" />
+              <badge.icon className="text-primary h-4 w-4" aria-hidden="true" />
               <span className="font-display text-xs font-medium sm:text-sm">
                 {badge.label}
               </span>

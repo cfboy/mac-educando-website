@@ -296,9 +296,10 @@ export function Contact() {
             href="https://www.facebook.com/MACAdviser/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Síguenos en Facebook (abre en nueva ventana)"
             className="font-display border-border text-foreground hover:border-primary hover:text-primary inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium transition-colors"
           >
-            <Facebook className="h-5 w-5" />
+            <Facebook className="h-5 w-5" aria-hidden="true" />
             Facebook
           </a>
         </motion.div>
@@ -328,7 +329,7 @@ function ContactItem({
     >
       <div className="bg-primary absolute top-0 bottom-0 left-0 w-1 opacity-0 transition-opacity group-hover:opacity-100" />
       <div className="bg-accent text-primary inline-flex rounded-lg p-3">
-        <Icon className="h-5 w-5" />
+        <Icon className="h-5 w-5" aria-hidden="true" />
       </div>
       <div>
         <p className="font-display text-muted-foreground text-sm font-medium">

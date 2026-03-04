@@ -149,7 +149,7 @@ export function Hero({ theme }: HeroProps) {
           className="text-muted-foreground mx-auto mb-10 max-w-xl text-base leading-relaxed sm:text-lg"
         >
           Evaluaciones, terapias y apoyo educativo especializado en Puerto Rico
-          &mdash; en oficina, escuelas o de forma virtual.
+          &mdash; en clínica, escuelas o de forma virtual.
         </motion.p>
 
         <motion.div
@@ -160,7 +160,7 @@ export function Hero({ theme }: HeroProps) {
             Conoce Nuestros Servicios
           </ButtonLink>
           <ButtonLink href="#contacto" variant="outline" size="lg">
-            <Phone className="h-4 w-4" />
+            <Phone className="h-4 w-4" aria-hidden="true" />
             Contáctanos
           </ButtonLink>
         </motion.div>

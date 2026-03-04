@@ -127,8 +127,8 @@ const SERVICES: Service[] = [
 const MODALITIES: Modality[] = [
   {
     icon: Building2,
-    title: 'Oficina',
-    description: 'Visítanos en nuestra oficina',
+    title: 'Clínica',
+    description: 'Visítanos en nuestra clínica',
     services: ['Evaluaciones', 'Terapias'],
   },
   {
@@ -229,7 +229,7 @@ export function Services() {
             <span className="text-secondary">servicios</span>?
           </h3>
           <p className="text-muted-foreground mx-auto mt-5 mb-12 max-w-2xl text-pretty">
-            Llegamos a donde nos necesites: en oficina, en la escuela o de forma
+            Llegamos a donde nos necesites: en clínica, en la escuela o de forma
             virtual.
           </p>
         </motion.div>

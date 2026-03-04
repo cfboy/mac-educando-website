@@ -92,23 +92,24 @@ export function Footer() {
                 href="tel:+17879980442"
                 className="text-muted-foreground hover:text-primary flex items-center gap-2 text-sm transition-colors"
               >
-                <Phone className="h-4 w-4" />
+                <Phone className="h-4 w-4" aria-hidden="true" />
                 (787) 998-0442
               </a>
               <a
                 href="mailto:info@maceducando.com"
                 className="text-muted-foreground hover:text-primary flex items-center gap-2 text-sm transition-colors"
               >
-                <Mail className="h-4 w-4" />
+                <Mail className="h-4 w-4" aria-hidden="true" />
                 info@maceducando.com
               </a>
               <a
                 href="https://www.facebook.com/MACAdviser/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Facebook de MAC Educando (abre en nueva ventana)"
                 className="text-muted-foreground hover:text-primary flex items-center gap-2 text-sm transition-colors"
               >
-                <Facebook className="h-4 w-4" />
+                <Facebook className="h-4 w-4" aria-hidden="true" />
                 Facebook
               </a>
             </div>
