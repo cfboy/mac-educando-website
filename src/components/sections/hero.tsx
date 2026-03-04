@@ -148,8 +148,8 @@ export function Hero({ theme }: HeroProps) {
           variants={itemVariants}
           className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
-          Evaluaciones, terapias y servicios educativos especializados en Puerto
-          Rico &mdash; en oficina, escuelas y de forma virtual.
+          Evaluaciones, terapias y apoyo educativo especializado en Puerto Rico
+          &mdash; en oficina, escuelas o de forma virtual.
         </motion.p>
 
         <motion.div

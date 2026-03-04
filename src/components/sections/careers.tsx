@@ -32,8 +32,8 @@ export function Careers() {
             Solicitud de <span className="text-secondary">Empleo</span>
           </h2>
           <p className="text-muted-foreground mx-auto mt-5 max-w-2xl text-pretty">
-            ¿Te apasiona la educación y el desarrollo integral? Completa el
-            formulario y forma parte de nuestro equipo de profesionales.
+            ¿Te apasiona la educación? Completa el formulario y forma parte de
+            nuestro equipo.
           </p>
         </motion.div>
 
@@ -179,7 +179,7 @@ export function Careers() {
                       type="text"
                       required
                       className={cn(INPUT_BASE, INPUT_VALID)}
-                      placeholder="Ej: Psicología, Terapia del Habla, Terapia Ocupacional"
+                      placeholder="Ej: Psicología, Terapia del Habla"
                     />
                   </div>
                   <div>
@@ -220,7 +220,7 @@ export function Careers() {
                       name="notes"
                       rows={3}
                       className={cn(INPUT_BASE, INPUT_VALID, 'resize-none')}
-                      placeholder="Cuéntanos sobre tu experiencia o cualquier información adicional"
+                      placeholder="Cuéntanos sobre tu experiencia"
                     />
                   </div>
 

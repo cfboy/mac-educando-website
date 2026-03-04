@@ -71,8 +71,8 @@ export function Contact() {
             ¿Cómo podemos <span className="text-secondary">ayudarte</span>?
           </h2>
           <p className="text-muted-foreground mx-auto mt-5 max-w-2xl text-pretty">
-            Estamos aquí para responder tus preguntas y ayudarte a encontrar los
-            servicios que mejor se adapten a tus necesidades.
+            Responderemos tus preguntas y te ayudaremos a encontrar el servicio
+            que necesitas.
           </p>
         </motion.div>
 
@@ -141,8 +141,7 @@ export function Contact() {
                   ¡Mensaje preparado!
                 </p>
                 <p className="text-muted-foreground mt-2 text-sm">
-                  Tu cliente de correo se abrirá con el mensaje listo para
-                  enviar.
+                  Tu app de correo se abrirá con el mensaje listo para enviar.
                 </p>
                 <button
                   type="button"

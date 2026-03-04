@@ -20,8 +20,8 @@ const itemVariants = {
 
 const BENEFITS = [
   'Sin compromiso',
-  'Respuesta en 24 horas',
-  'Consulta gratuita',
+  'Respuesta en 24h',
+  'Consulta inicial gratis',
 ]
 
 export function FinalCta() {
@@ -63,8 +63,8 @@ export function FinalCta() {
           variants={itemVariants}
           className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg"
         >
-          Contáctanos para una evaluación inicial y descubre cómo podemos apoyar
-          el desarrollo integral de tu hijo o hija.
+          Solicita una evaluación inicial y descubre cómo podemos apoyar a tu
+          hijo o hija.
         </motion.p>
 
         <motion.div

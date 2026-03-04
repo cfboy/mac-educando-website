@@ -37,77 +37,77 @@ const SERVICES: Service[] = [
     icon: ClipboardCheck,
     title: 'Evaluaciones',
     description:
-      'Evaluaciones Psicológicas, Del Habla y Ocupacional, entre otras. Presencia en los COMPU cuando sea necesario y solicitado por la escuela.',
+      'Evaluaciones psicológicas, del habla, ocupacionales y más. Asistimos a los COMPU cuando la escuela lo solicita.',
     details: [
-      'Tri Anuales — evaluaciones programadas cada tres años para seguimiento continuo del desarrollo del estudiante',
-      'Re-Evaluaciones — revisión de progreso para ajustar planes de intervención según las necesidades actuales',
-      'Evaluaciones Adicionales — evaluaciones solicitadas fuera del ciclo regular para atender necesidades emergentes',
-      'Tipos: Psicométricas, Socioemocionales, Psicoeducativas, Del Habla y Ocupacional',
+      'Tri-anuales — seguimiento cada tres años del desarrollo del estudiante',
+      'Re-evaluaciones — revisión de progreso para ajustar el plan de intervención',
+      'Evaluaciones adicionales — fuera del ciclo regular para necesidades emergentes',
+      'Tipos: psicométricas, socioemocionales, psicoeducativas, del habla y ocupacionales',
     ],
   },
   {
     icon: Brain,
     title: 'Terapia Psicológica',
     description:
-      'Atención psicológica especializada individual y grupal para el bienestar emocional y conductual del estudiante.',
+      'Atención especializada para el bienestar emocional y conductual del estudiante, en sesiones individuales o grupales.',
     details: [
-      'Modalidad individual — sesiones personalizadas según las necesidades del estudiante',
-      'Modalidad grupal — intervención en grupo para desarrollo de habilidades sociales y emocionales',
-      'Enfoque conductual y emocional adaptado a cada etapa de desarrollo',
+      'Individual — sesiones personalizadas según las necesidades del estudiante',
+      'Grupal — desarrollo de habilidades sociales y emocionales en grupo',
+      'Enfoque adaptado a cada etapa de desarrollo',
     ],
   },
   {
     icon: MessageCircle,
     title: 'Terapia del Habla',
     description:
-      'Intervención individual y grupal en lenguaje y comunicación para mejorar las habilidades de expresión y comprensión.',
+      'Intervención en lenguaje y comunicación para mejorar la expresión y comprensión, individual o grupal.',
     details: [
-      'Modalidad individual y grupal',
-      'Desarrollo de habilidades de expresión oral y comprensión auditiva',
-      'Intervención en articulación, fluidez y lenguaje receptivo/expresivo',
+      'Sesiones individuales o grupales según necesidad',
+      'Desarrollo de expresión oral y comprensión auditiva',
+      'Articulación, fluidez y lenguaje receptivo/expresivo',
     ],
   },
   {
     icon: Activity,
     title: 'Terapia Física',
     description:
-      'Rehabilitación y fortalecimiento físico individual y grupal orientado a mejorar las capacidades motoras.',
+      'Rehabilitación y fortalecimiento físico para mejorar las capacidades motoras del estudiante.',
     details: [
-      'Modalidad individual y grupal',
+      'Sesiones individuales o grupales',
       'Fortalecimiento de capacidades motoras gruesas',
-      'Rehabilitación orientada al rendimiento funcional del estudiante',
+      'Rehabilitación orientada al rendimiento funcional',
     ],
   },
   {
     icon: Hand,
     title: 'Terapia Ocupacional',
     description:
-      'Desarrollo de habilidades funcionales individual y grupal para la vida diaria y el rendimiento académico.',
+      'Desarrollo de habilidades funcionales para la vida diaria y el rendimiento académico.',
     details: [
-      'Modalidad individual y grupal',
-      'Desarrollo de motricidad fina y habilidades de escritura',
-      'Integración sensorial y habilidades de la vida diaria',
+      'Sesiones individuales o grupales',
+      'Motricidad fina y habilidades de escritura',
+      'Integración sensorial y autonomía en la vida diaria',
     ],
   },
   {
     icon: GraduationCap,
     title: 'Desarrollo Académico',
     description:
-      'Programas diseñados para potenciar el rendimiento y las habilidades académicas del estudiante.',
+      'Programas para fortalecer el rendimiento y las habilidades académicas del estudiante.',
     details: [
       'Estrategias de aprendizaje personalizadas',
-      'Apoyo en áreas de lectura, escritura y matemáticas',
-      'Planes de intervención académica individualizados',
+      'Apoyo en lectura, escritura y matemáticas',
+      'Planes de intervención académica a la medida',
     ],
   },
   {
     icon: Users,
     title: 'Desarrollo Profesional',
     description:
-      'Orientación y capacitación para el crecimiento profesional de educadores y terapeutas. Servicio ofrecido en centros educativos.',
+      'Capacitación para educadores y terapeutas, disponible en centros educativos.',
     details: [
-      'Talleres y capacitaciones para maestros y personal escolar',
-      'Estrategias de manejo de conducta en el salón de clases',
+      'Talleres para maestros y personal escolar',
+      'Estrategias de manejo de conducta en el salón',
       'Disponible exclusivamente en centros educativos',
     ],
   },
@@ -115,10 +115,10 @@ const SERVICES: Service[] = [
     icon: BookOpen,
     title: 'Ofrecimiento a Padres',
     description:
-      'Talleres y herramientas para el crecimiento integral y el bienestar familiar. Servicio ofrecido en centros educativos.',
+      'Talleres y herramientas para el bienestar familiar, disponible en centros educativos.',
     details: [
-      'Talleres sobre desarrollo infantil y estrategias de crianza',
-      'Orientación sobre los servicios y derechos educativos de sus hijos',
+      'Talleres sobre desarrollo infantil y crianza',
+      'Orientación sobre servicios y derechos educativos',
       'Disponible exclusivamente en centros educativos',
     ],
   },
@@ -128,13 +128,13 @@ const MODALITIES: Modality[] = [
   {
     icon: Building2,
     title: 'Oficina',
-    description: 'Servicios disponibles en nuestra oficina',
+    description: 'Visítanos en nuestra oficina',
     services: ['Evaluaciones', 'Terapias'],
   },
   {
     icon: School,
     title: 'Centros Educativos',
-    description: 'Servicios que ofrecemos en escuelas',
+    description: 'Vamos directamente a la escuela',
     services: [
       'Terapias',
       'Evaluaciones',
@@ -145,7 +145,7 @@ const MODALITIES: Modality[] = [
   {
     icon: Monitor,
     title: 'Virtual',
-    description: 'Servicios disponibles de forma remota',
+    description: 'Sesiones desde la comodidad de tu hogar',
     services: ['Terapias', 'Evaluaciones'],
   },
 ]
@@ -191,8 +191,8 @@ export function Services() {
             <span className="text-secondary">desarrollo integral</span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-pretty text-muted-foreground">
-            Brindamos una amplia gama de servicios especializados para apoyar el
-            crecimiento profesional, académico y personal de cada individuo.
+            Servicios especializados que apoyan el crecimiento académico,
+            emocional y personal de cada estudiante.
           </p>
         </motion.div>
 
@@ -229,8 +229,8 @@ export function Services() {
             <span className="text-secondary">servicios</span>?
           </h3>
           <p className="mx-auto mt-5 mb-12 max-w-2xl text-pretty text-muted-foreground">
-            Llegamos a donde nos necesites: en nuestra oficina, en centros
-            educativos o de forma virtual.
+            Llegamos a donde nos necesites: en oficina, en la escuela o de forma
+            virtual.
           </p>
         </motion.div>
 

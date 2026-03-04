@@ -63,9 +63,8 @@ export function About() {
                 Misión
               </h3>
               <p className="text-muted-foreground max-w-lg text-base leading-relaxed">
-                Proveer servicios educativos y terapéuticos de excelencia que
-                impulsen el desarrollo integral de cada individuo, fomentando su
-                crecimiento profesional, académico y personal en un ambiente de
+                Ofrecer servicios educativos y terapéuticos de excelencia que
+                impulsen el desarrollo de cada estudiante en un ambiente de
                 apoyo y confianza.
               </p>
             </div>
@@ -87,9 +86,8 @@ export function About() {
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   Ser el centro de servicios educativos líder en Puerto Rico,
-                  reconocido por la calidad de nuestros servicios y el impacto
-                  positivo en la vida de las familias y comunidades que
-                  servimos.
+                  reconocido por su calidad y su impacto positivo en las
+                  familias y comunidades que servimos.
                 </p>
               </div>
             </motion.div>
@@ -107,9 +105,9 @@ export function About() {
                   Valores
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Compromiso, excelencia, empatía e innovación. Trabajamos con
-                  dedicación para ofrecer un servicio personalizado que responda
-                  a las necesidades únicas de cada persona y su familia.
+                  Compromiso, excelencia, empatía e innovación. Cada familia
+                  recibe un servicio personalizado que responde a sus
+                  necesidades únicas.
                 </p>
               </div>
             </motion.div>

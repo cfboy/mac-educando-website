@@ -30,8 +30,7 @@ export function Footer() {
             <p className="text-sm leading-relaxed text-muted-foreground">
               M Adviser and Consultant Inc.
               <br />
-              Centro de Servicios Educativos en Puerto Rico, comprometidos con el
-              desarrollo integral.
+              Servicios educativos y terapéuticos especializados en Puerto Rico.
             </p>
           </div>
 
