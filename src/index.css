@@ -3,7 +3,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Source Serif 4', Georgia, serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
 
   /* Brand colors extracted from MAC Educando logo */
   --color-mac-green-50: #f0f7ef;
@@ -30,51 +31,94 @@
 
   --color-mac-leaf: #7cb342;
   --color-mac-yellow: #ffd600;
+
+  /* Semantic color tokens — light mode defaults */
+  --color-background: #ffffff;
+  --color-foreground: #0a1f0a;
+  --color-card: #ffffff;
+  --color-card-foreground: #0a1f0a;
+  --color-muted: #f0f7ef;
+  --color-muted-foreground: #4a5e4a;
+  --color-border: #d4ebd2;
+  --color-ring: #2d6a2e;
+  --color-primary: #2d6a2e;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #e8751a;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #f0f7ef;
+  --color-accent-foreground: #1b441b;
+}
+
+/* Dark mode overrides */
+.dark {
+  --color-background: #0c1a0c;
+  --color-foreground: #e8f5e8;
+  --color-card: #132213;
+  --color-card-foreground: #e8f5e8;
+  --color-muted: #1b331b;
+  --color-muted-foreground: #a8cda8;
+  --color-border: #245724;
+  --color-ring: #4e9a47;
+  --color-primary: #4e9a47;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #e8751a;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #1b331b;
+  --color-accent-foreground: #d4ebd2;
 }
 
 @layer base {
-  :root {
-    --background: #ffffff;
-    --foreground: #0a1f0a;
-    --card: #ffffff;
-    --card-foreground: #0a1f0a;
-    --muted: #f0f7ef;
-    --muted-foreground: #4a5e4a;
-    --border: #d4ebd2;
-    --ring: #2d6a2e;
-    --primary: #2d6a2e;
-    --primary-foreground: #ffffff;
-    --secondary: #e8751a;
-    --secondary-foreground: #ffffff;
-    --accent: #f0f7ef;
-    --accent-foreground: #1b441b;
-  }
-
-  .dark {
-    --background: #0c1a0c;
-    --foreground: #e8f5e8;
-    --card: #132213;
-    --card-foreground: #e8f5e8;
-    --muted: #1b331b;
-    --muted-foreground: #a8cda8;
-    --border: #245724;
-    --ring: #4e9a47;
-    --primary: #4e9a47;
-    --primary-foreground: #ffffff;
-    --secondary: #e8751a;
-    --secondary-foreground: #ffffff;
-    --accent: #1b331b;
-    --accent-foreground: #d4ebd2;
-  }
-
   * {
-    border-color: var(--border);
+    border-color: var(--color-border);
   }
 
   body {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
     font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 5vw + 1rem, 3.75rem);
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 3vw + 0.5rem, 2.25rem);
+  }
+
+  /* Skip to content link */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border-radius: 0 0 0.5rem 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
